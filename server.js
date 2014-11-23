@@ -2,7 +2,7 @@
  * Created by Newton on 2014/11/22.
  */
 var PORT = 8888;
-var ROOT = process.cwd();
+var ROOT = __dirname;
 var http = require('http');
 var nativeAssets = require('./native-assets')(ROOT);
 var serveStatic = require('serve-static');

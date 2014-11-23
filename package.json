@@ -1,6 +1,9 @@
 {
     "name": "node-server",
     "version": "0.0.1",
+    "bin": {
+        "servers": "bin/server"
+    },
     "main": "server.js",
     "license": "MIT",
     "keywords": [
@@ -26,6 +29,7 @@
         "url": "https://github.com/nuintun/node-server.git"
     },
     "dependencies": {
+        "commander": "~2.5.0",
         "serve-static": "~1.7.1"
     },
     "devDependencies": {
