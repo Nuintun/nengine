@@ -2,6 +2,7 @@
  * Created by Newton on 2014/11/22.
  */
 var fs = require('fs'),
+    dirname = __dirname,
     path = require('path'),
     http = require('http'),
     log4js = require('log4js'),
@@ -9,8 +10,8 @@ var fs = require('fs'),
     merge = require('./lib/merge'),
     serveStatic = require('serve-static'),
     nengineAssets = require('./nengine-assets'),
-    defaults = JSON.parse(fs.readFileSync('nengine.json', 'utf-8')),
-    version = JSON.parse(fs.readFileSync('package.json', 'utf-8')).version;
+    defaults = JSON.parse(fs.readFileSync(path.join(dirname, 'nengine.json'), 'utf-8')),
+    version = JSON.parse(fs.readFileSync(path.join(dirname, 'package.json'), 'utf-8')).version;
 
 // 调用内置状态页
 function defaultStatus(requset, response, err){
