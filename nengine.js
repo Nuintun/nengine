@@ -12,15 +12,65 @@ var fs = require('fs'),
     defaults = JSON.parse(fs.readFileSync('nengine.json', 'utf-8'));
 
 function defaultStatus(response, err){
+    var that = this;
+
     if (err === null) {
         response.statusCode = 404;
         response.setHeader('Content-Type', 'text/html');
-        response.end(this.assets.status['404']);
+        response.end(that.assets.status['404']);
     } else {
         response.statusCode = err.status || 500;
         response.setHeader('Content-Type', 'text/plain');
         response.end(JSON.stringify(err, null, '&nbsp;&nbsp;'));
     }
+}
+
+function nengineError(requset, response, send, err){
+    var that = this,
+        config = that.config,
+        status = err === null ? 404 : err.status;
+
+    response.statusCode = status;
+
+    if (config.status[status]) {
+        requset.url = config.status[status];
+
+        send(requset, response, function (err){
+            defaultStatus.call(that, response, err);
+        });
+    } else {
+        if (status === 404) {
+            that.logger.warn('Resource not found: ' + requset.url);
+            response.setHeader('Content-Type', 'text/html');
+            response.end(that.assets.html['404']);
+        } else {
+            that.logger.error('Server error: ' + err.message);
+            response.setHeader('Content-Type', 'text/plain');
+            response.end(JSON.stringify(err, null, '&nbsp;&nbsp;'));
+        }
+    }
+}
+
+function viewFolder(requset, response){
+    var that = this,
+        config = that.config,
+        dirpath, originalUrl, hasTrailingSlash;
+
+    dirpath = parseurl(requset).pathname;
+    originalUrl = parseurl.original(requset);
+    hasTrailingSlash = originalUrl.pathname[originalUrl.pathname.length - 1] === '/';
+
+    if (dirpath === '/' && !hasTrailingSlash) {
+        // make sure redirect occurs at mount
+        dirpath = '';
+    }
+
+    fs.readdir(path.join(config.root, dirpath), function (err, files){
+        response.end(that.assets.html['files']({
+            files: files,
+            dirpath: dirpath
+        }));
+    });
 }
 
 function Nengine(options){
@@ -53,44 +103,14 @@ Nengine.prototype = {
             that.logger.trace('Resource request: ' + requset.url);
 
             send(requset, response, function (err){
-                var path, status,
-                    originalUrl, hasTrailingSlash;
-
-                if (config.redirect && err !== undefined) {
-                    status = err === null ? 404 : err.status;
-
-                    response.statusCode = status;
-
-                    if (config.status[status]) {
-                        requset.url = config.status[status];
-
-                        send(requset, response, function (err){
-                            defaultStatus.call(that, response, err);
-                        });
-                    } else {
-                        if (status === 404) {
-                            that.logger.warn('Resource not found: ' + requset.url);
-                            response.setHeader('Content-Type', 'text/html');
-                            response.end(that.assets.html['404']);
-                        } else {
-                            that.logger.error('Server error: ' + err.message);
-                            response.setHeader('Content-Type', 'text/plain');
-                            response.end(JSON.stringify(err, null, '&nbsp;&nbsp;'));
-                        }
-                    }
+                if (config.redirect || err !== undefined) {
+                    nengineError.call(that, requset, response, send, err);
                 } else {
-                    path = parseurl(requset).pathname;
-                    originalUrl = parseurl.original(requset);
-                    hasTrailingSlash = originalUrl.pathname[originalUrl.pathname.length - 1] === '/';
-
-                    if (path === '/' && !hasTrailingSlash) {
-                        // make sure redirect occurs at mount
-                        path = '';
+                    if (err === null) {
+                        nengineError.call(that, requset, response, send, err);
+                    } else {
+                        viewFolder.call(that, requset, response);
                     }
-
-                    response.end(that.assets.html['files']({
-                        files: ['a.html']
-                    }));
                 }
             });
         });

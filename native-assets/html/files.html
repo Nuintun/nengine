@@ -5,6 +5,8 @@
         <title></title>
     </head>
     <body>
-        <%= files[0] %>
+        <% files.forEach(function(file){ %>
+        <a href="<%= dirpath %>/<%= file %>"><%= file %></a><br>
+        <% }) %>
     </body>
 </html>
