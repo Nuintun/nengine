@@ -16,11 +16,7 @@ function parse(root, filepath, data){
 
     data.NativeAssetsRoot = relapath.replace(/\\/g, '/');
 
-    var fn = template(filepath, data);
-
-    console.log(template.get(filepath).toString().replace(/\\n/g, ''));
-
-    return fn;
+    return template(filepath, data);
 }
 
 module.exports = function (root){
