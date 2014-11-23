@@ -87,9 +87,18 @@ function Nengine(options){
 
     this.logger = logger;
     this.config = config;
+
+    return this;
 }
 
 Nengine.prototype = {
+    setHeader: function (callback){
+        if (typeof callback === 'function') {
+            this.config['setHeaders'] = callback;
+        }
+
+        return this;
+    },
     run: function (){
         var that = this,
             config = that.config,
@@ -114,10 +123,23 @@ Nengine.prototype = {
             });
         });
 
+        httpServer.on('listening', function (){
+            that.logger.info('Server runing at port: ' + config.port);
+        });
+
+        httpServer.on('error', function (err){
+            that.logger.error('Server failed to start: ' + err.message);
+        });
+
+        httpServer.on('close', function (){
+            that.logger.info('Server closed');
+        });
+
         httpServer.listen(config.port);
 
-        that.logger.info('Server runing at port: ' + config.port);
+        return httpServer;
     }
 };
 
-new Nengine().run();
+var NengineStatic = new Nengine();
+NengineStatic.run();
