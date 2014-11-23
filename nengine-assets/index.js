@@ -14,7 +14,7 @@ function parse(root, filepath, data){
 
     data = merge({}, data);
 
-    data.NativeAssetsRoot = relapath.replace(/\\/g, '/');
+    data.NengineAssetsRoot = relapath.replace(/\\/g, '/');
 
     return template(filepath, data);
 }
