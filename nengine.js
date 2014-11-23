@@ -14,9 +14,7 @@ var fs = require('fs'),
 // 调用内置状态页
 function defaultStatus(requset, response, err){
     var that = this;
-
-    console.log(that)
-
+    
     response.setHeader('Content-Type', 'text/html');
 
     if (err === null) {
@@ -25,7 +23,7 @@ function defaultStatus(requset, response, err){
         response.statusCode = 404;
         response.end(that.assets.html['404']);
     } else {
-        that.logger.warn('Resource not found: ' + requset.url);
+        that.logger.warn('Nengine server error: ' + requset.url);
 
         response.statusCode = err.status || 500;
         response.end(that.assets.html['default'](

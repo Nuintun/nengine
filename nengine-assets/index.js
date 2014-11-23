@@ -26,7 +26,12 @@ module.exports = function (root){
             folder: function (files){
                 return parse(root, '/html/folder', files);
             },
-            'default': parse(root, '/html/default')
+            'default': function (status, message){
+                return parse(root, '/html/default', {
+                    status: status,
+                    message: message
+                });
+            }
         },
         parse: parse
     };
