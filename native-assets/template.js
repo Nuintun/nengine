@@ -3,7 +3,9 @@
  * https://github.com/aui/artTemplate
  * Released under the MIT, BSD, and GPL Licenses
  */
-var fs = require('fs');
+var fs = require('fs'),
+    path = require('path'),
+    FULLPATH_RE = /:[\\/]/;
 
 /**
  * 模板引擎
@@ -19,7 +21,7 @@ var template = function (filename, content){
         }) : renderFile(filename, content);
 };
 
-template.version = '3.0.0';
+template.version = '3.0.3';
 
 /**
  * 设置全局配置
@@ -32,12 +34,15 @@ template.config = function (name, value){
 };
 
 var defaults = template.defaults = {
-    openTag: '<%',    // 逻辑语法开始标签
-    closeTag: '%>',   // 逻辑语法结束标签
-    escape: true,     // 是否编码输出变量的 HTML 字符
-    cache: true,      // 是否开启缓存（依赖 options 的 filename 字段）
-    compress: false,  // 是否压缩输出
-    parser: null      // 自定义语法格式器 @see: template-syntax.js
+    openTag: '<%',       // 逻辑语法开始标签
+    closeTag: '%>',      // 逻辑语法结束标签
+    escape: true,        // 是否编码输出变量的 HTML 字符
+    cache: true,         // 是否开启缓存（依赖 options 的 filename 字段）
+    compress: false,     // 是否压缩输出
+    parser: null,        // 自定义语法格式器 @see: template-syntax.js
+    base: process.cwd(), // 子模版读取根目录，默认程序运行目录
+    extname: '.html',    // 模板后缀名
+    encoding: 'utf-8'    // 模板编码
 };
 
 var cacheStore = template.cache = {};
@@ -61,6 +66,15 @@ template.render = function (source, options){
  * @return  {String}    渲染好的字符串
  */
 var renderFile = template.renderFile = function (filename, data){
+    var defaults = template.defaults,
+        extname = path.extname(filename);
+
+    if (filename.charAt(0) === '/')
+        filename = path.join(defaults.base, filename);
+
+    if (defaults.extname.toLowerCase() !== extname.toLowerCase())
+        filename += defaults.extname;
+
     var fn = template.get(filename) || showDebugInfo({
             filename: filename,
             name: 'Render Error',
@@ -84,7 +98,7 @@ template.get = function (filename){
     } else {
         // 加载模板并编译
         try {
-            var source = fs.readFileSync(filename, 'utf-8');
+            var source = fs.readFileSync(filename, template.defaults.encoding);
 
             cache = compile(source, {
                 filename: filename
@@ -111,6 +125,13 @@ var toString = function (value, type){
     }
 
     return value;
+};
+
+var include = function (filename, data, parent){
+    if (filename.charAt(0) !== '/' && !FULLPATH_RE.test(filename))
+        filename = path.join(path.dirname(parent), filename);
+
+    return renderFile(filename, data);
 };
 
 var escapeMap = {
@@ -150,7 +171,7 @@ var each = function (data, callback){
 
 var utils = template.utils = {
     $helpers: {},
-    $include: renderFile,
+    $include: include,
     $string: toString,
     $escape: escapeHTML,
     $each: each
@@ -338,7 +359,7 @@ function compiler(source, options){
         + "var $utils=this,$helpers=$utils.$helpers,"
         + (debug ? "$line=0," : "");
     var mainCode = replaces[0];
-    var footerCode = "return new String(" + replaces[3] + ");"
+    var footerCode = "return new String(" + replaces[3] + ");";
 
     // html与逻辑语法分离
     forEach(source.split(openTag), function (code){
@@ -463,7 +484,6 @@ function compiler(source, options){
             // [include, print] > utils > helpers > data
             if (name === 'print') {
                 value = print;
-
             } else if (name === 'include') {
                 value = include;
             } else if (utils[name]) {

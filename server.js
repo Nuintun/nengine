@@ -4,7 +4,7 @@
 var PORT = 8888;
 var ROOT = process.cwd();
 var http = require('http');
-var nativeAssets = require('./native-assets');
+var nativeAssets = require('./native-assets')(ROOT);
 var serveStatic = require('serve-static');
 var send = serveStatic(ROOT, {
     index: ['index.html', 'index.htm'],
@@ -21,7 +21,7 @@ var httpServer = http.createServer(function (req, res){
                 'Content-Type': 'text/html'
             });
 
-            res.end(nativeAssets(ROOT, '/status/404/404.html'));
+            res.end(nativeAssets.status['404']);
         } else {
             res.writeHead(500, {
                 'Content-Type': 'text/plain'

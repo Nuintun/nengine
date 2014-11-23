@@ -1,18 +1,27 @@
 /**
  * Created by Newton on 2014/11/22.
  */
-var path = require('path'),
+var base = __dirname,
+    path = require('path'),
     template = require('./template');
 
+template.config('base', base);
+
 function parse(root, filepath, data){
-    var relapath = path.relative(root, __dirname);
+    var relapath = path.relative(root, base);
 
     data = data || {};
-    filepath = path.join(root, relapath, filepath);
 
     data.NativeAssetsRoot = relapath.replace(/\\/g, '/');
 
     return template(filepath, data);
 }
 
-module.exports = parse;
+module.exports = function (root){
+    return {
+        status: {
+            404: parse(root, '/status/404/404')
+        },
+        parse: parse
+    };
+};
