@@ -108,9 +108,9 @@ Nengine.prototype = {
 
         // Create server
         var httpServer = http.createServer(function (requset, response){
-            if (server && typeof server === 'string') {
+            if (server) {
                 server = server === true ? 'Nengine' + (version ? '/' + version : '') : server;
-                response.setHeader('Server', server);
+                typeof server === 'string' && response.setHeader('Server', server);
             }
 
             that.logger.trace('Resource request: ' + requset.url);
