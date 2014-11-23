@@ -7,7 +7,6 @@ var base = __dirname,
     template = require('./template');
 
 template.config('base', base);
-template.config('cache', false);
 
 function parse(root, filepath, data){
     var relapath = path.relative(root, base);
