@@ -9,7 +9,7 @@ var fs = require('fs'),
     log4js = require('log4js'),
     parseurl = require('parseurl'),
     merge = require('./lib/merge'),
-    serveStatic = require('serve-static'),
+    serveStatic = require('./lib/serve-static'),
     nengineAssets = require('./nengine-assets'),
     defaults = JSON.parse(fs.readFileSync(path.join(dirname, 'nengine.json'), 'utf-8')),
     version = JSON.parse(fs.readFileSync(path.join(dirname, 'package.json'), 'utf-8')).version;
@@ -135,14 +135,14 @@ Nengine.prototype = {
                 typeof server === 'string' && response.setHeader('Server', server);
             }
 
-            that.logger.trace('Request: ' + requset.url);
-
             send(requset, response, function (err){
                 if (!config.redirect && err === 'directory') {
                     viewFolder.call(that, requset, response);
                 } else {
                     nengineError.call(that, requset, response, send, err);
                 }
+            }).on('end', function (){
+                that.logger.trace('Request: ' + requset.url);
             });
         });
 
