@@ -9,7 +9,8 @@ var fs = require('fs'),
     merge = require('./lib/merge'),
     serveStatic = require('serve-static'),
     nengineAssets = require('./nengine-assets'),
-    defaults = JSON.parse(fs.readFileSync('nengine.json', 'utf-8'));
+    defaults = JSON.parse(fs.readFileSync('nengine.json', 'utf-8')),
+    version = JSON.parse(fs.readFileSync('package.json', 'utf-8')).version;
 
 // 调用内置状态页
 function defaultStatus(requset, response, err){
@@ -102,11 +103,15 @@ Nengine.prototype = {
     run: function (){
         var that = this,
             config = that.config,
+            server = config.server,
             send = serveStatic(config.root, config);
 
         // Create server
         var httpServer = http.createServer(function (requset, response){
-            response.setHeader('Server', config.server);
+            if (server && typeof server === 'string') {
+                server = server === true ? 'Nengine' + (version ? '/' + version : '') : server;
+                response.setHeader('Server', server);
+            }
 
             that.logger.trace('Resource request: ' + requset.url);
 
@@ -141,5 +146,4 @@ Nengine.prototype = {
     }
 };
 
-var NengineStatic = new Nengine();
-NengineStatic.run();
+module.exports = Nengine;

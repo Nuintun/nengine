@@ -2,9 +2,9 @@
     "name": "nengine",
     "version": "0.0.1",
     "bin": {
-        "servers": "bin/nengine"
+        "nengine": "bin/nengine"
     },
-    "main": "nengine.js",
+    "main": "server",
     "license": "MIT",
     "keywords": [
         "server",

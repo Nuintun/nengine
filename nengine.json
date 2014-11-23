@@ -14,7 +14,7 @@
     ],
     "lastModified": true,
     "redirect": false,
-    "server": "Nengine/0.0.1",
+    "server": true,
     "status": {},
     "logger": "INFO"
 }
