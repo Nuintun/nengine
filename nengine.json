@@ -1,0 +1,20 @@
+{
+    "root": null,
+    "port": 80,
+    "maxage": 0,
+    "dotfiles": "ignore",
+    "extensions": false,
+    "index": [
+        "index.html",
+        "index.htm",
+        "default.html",
+        "default.htm",
+        "main.html",
+        "main.htm"
+    ],
+    "lastModified": true,
+    "redirect": true,
+    "server": "Nengine/0.0.1",
+    "status": {},
+    "logger": "ALL"
+}

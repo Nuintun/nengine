@@ -23,3 +23,7 @@ Makefile
 
 # js lint
 .jshintrc
+
+# Logs
+logs
+*.log

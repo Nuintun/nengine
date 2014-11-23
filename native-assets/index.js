@@ -20,7 +20,7 @@ function parse(root, filepath, data){
 module.exports = function (root){
     return {
         status: {
-            404: parse(root, '/status/404/404')
+            404: parse(root, '/html/404')
         },
         parse: parse
     };
