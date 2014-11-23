@@ -15,25 +15,36 @@ var fs = require('fs'),
     version = JSON.parse(fs.readFileSync(path.join(dirname, 'package.json'), 'utf-8')).version;
 
 // 调用内置状态页
-function defaultStatus(requset, response, err){
+function defaultStatus(requset, response, send, err){
     var message,
         that = this;
 
-    response.setHeader('Content-Type', 'text/html');
+    //文件未找到
+    if (err.status === 404) {
+        // 如果根目录没有 favicon.ico，则使用内置的图标
+        if (requset.url === '/favicon.ico' && requset.pathToRoot !== '/') {
+            requset.url = that.favicon;
 
-    if (err === null) {
-        message = 'Not Found';
+            send(requset, response, function (err){
+                defaultStatus.call(that, requset, response, send, err);
+            });
+        } else {
+            message = 'Not Found';
 
-        that.logger.warn('Request: ' + requset.url + ' ' + message);
+            that.logger.warn('Request: ' + requset.url + ' ' + message);
 
-        response.statusCode = 404;
-        response.end(that.assets.html['404']);
+            response.statusCode = 404;
+            response.setHeader('Content-Type', 'text/html');
+            response.end(that.assets.html['404']);
+        }
     } else {
+        // 服务器出错
         message = err.message || 'Nengine Server Error';
 
         that.logger.warn('Request: ' + requset.url + ' ' + message);
 
         response.statusCode = err.status || 500;
+        response.setHeader('Content-Type', 'text/html');
         response.end(that.assets.html['default'](response.statusCode, message));
     }
 }
@@ -42,7 +53,7 @@ function defaultStatus(requset, response, err){
 function nengineError(requset, response, send, err){
     var that = this,
         config = that.config,
-        status = err === null ? 404 : err.status;
+        status = err.status;
 
     response.statusCode = status;
 
@@ -50,11 +61,16 @@ function nengineError(requset, response, send, err){
         requset.url = config.status[status];
 
         send(requset, response, function (err){
-            defaultStatus.call(that, requset, response, err);
+            defaultStatus.call(that, requset, response, send, err);
         });
     } else {
-        defaultStatus.call(that, requset, response, err);
+        defaultStatus.call(that, requset, response, send, err);
     }
+}
+
+// 转换路径到http格式的路径
+function httpPath(path){
+    return path.replace(/\\/g, '/');
 }
 
 // 显示文件夹目录
@@ -92,6 +108,8 @@ function Nengine(options){
 
     this.logger = logger;
     this.config = config;
+    this.pathToRoot = '/' + httpPath(path.relative(config.root, dirname));
+    this.favicon = httpPath(path.join(this.pathToRoot, 'favicon.ico').replace(/\\/g, '/'));
 
     return this;
 }
@@ -120,14 +138,10 @@ Nengine.prototype = {
             that.logger.trace('Request: ' + requset.url);
 
             send(requset, response, function (err){
-                if (config.redirect || err !== undefined) {
-                    nengineError.call(that, requset, response, send, err);
+                if (!config.redirect && err === 'directory') {
+                    viewFolder.call(that, requset, response);
                 } else {
-                    if (err === null) {
-                        nengineError.call(that, requset, response, send, err);
-                    } else {
-                        viewFolder.call(that, requset, response);
-                    }
+                    nengineError.call(that, requset, response, send, err);
                 }
             });
         });

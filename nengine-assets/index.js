@@ -10,11 +10,11 @@ template.config('base', base);
 template.config('compress', true);
 
 function parse(root, filepath, data){
-    var relapath = path.relative(root, base);
+    var relapath = '/' + path.relative(root, base).replace(/\\/g, '/');
 
     data = merge({}, data);
 
-    data.NengineAssetsRoot = relapath.replace(/\\/g, '/');
+    data.NengineAssetsRoot = relapath;
 
     return template(filepath, data);
 }
