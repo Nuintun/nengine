@@ -16,5 +16,5 @@
     "redirect": false,
     "server": "Nengine/0.0.1",
     "status": {},
-    "logger": "ALL"
+    "logger": "INFO"
 }
