@@ -24,14 +24,14 @@ function defaultStatus(requset, response, err){
     if (err === null) {
         message = 'Not Found';
 
-        that.logger.warn('Request: ' + requset.url + ' >>> ' + message);
+        that.logger.warn('Request: ' + requset.url + ' ' + message);
 
         response.statusCode = 404;
         response.end(that.assets.html['404']);
     } else {
         message = err.message || 'Nengine Server Error';
 
-        that.logger.warn('Request: ' + requset.url + ' >>> ' + message);
+        that.logger.warn('Request: ' + requset.url + ' ' + message);
 
         response.statusCode = err.status || 500;
         response.end(that.assets.html['default'](response.statusCode, message));
