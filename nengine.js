@@ -8,12 +8,14 @@ var fs = require('fs'),
     parseurl = require('parseurl'),
     merge = require('./lib/merge'),
     serveStatic = require('serve-static'),
-    nativeAssets = require('./native-assets'),
+    nengineAssets = require('./nengine-assets'),
     defaults = JSON.parse(fs.readFileSync('nengine.json', 'utf-8'));
 
 // 调用内置状态页
-function defaultStatus(response, err){
+function defaultStatus(requset, response, err){
     var that = this;
+
+    console.log(that)
 
     response.setHeader('Content-Type', 'text/html');
 
@@ -21,12 +23,12 @@ function defaultStatus(response, err){
         that.logger.warn('Resource not found: ' + requset.url);
 
         response.statusCode = 404;
-        response.end(that.assets.status['404']);
+        response.end(that.assets.html['404']);
     } else {
         that.logger.warn('Resource not found: ' + requset.url);
 
         response.statusCode = err.status || 500;
-        response.end(that.assets.status['default'](
+        response.end(that.assets.html['default'](
             response.statusCode,
             JSON.stringify(err, null, '&nbsp;&nbsp;')
         ));
@@ -45,10 +47,10 @@ function nengineError(requset, response, send, err){
         requset.url = config.status[status];
 
         send(requset, response, function (err){
-            defaultStatus.call(that, response, err);
+            defaultStatus.call(that, requset, response, err);
         });
     } else {
-        defaultStatus.call(that, response, err);
+        defaultStatus.call(that, requset, response, err);
     }
 }
 
@@ -80,7 +82,7 @@ function Nengine(options){
         config = merge(defaults, options);
 
     config.root = config.root || process.cwd();
-    this.assets = nativeAssets(config.root);
+    this.assets = nengineAssets(config.root);
 
     log4js.loadAppender('file');
     log4js.addAppender(log4js.appenders.file(path.join(config.root, 'nengine.log')), 'Nengine');
@@ -117,7 +119,7 @@ Nengine.prototype = {
             });
         });
 
-        httpServer.listen(config.port, '127.0.0.1');
+        httpServer.listen(config.port);
 
         that.logger.info('Server runing at port: ' + config.port);
     }
