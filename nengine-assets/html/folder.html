@@ -10,13 +10,17 @@
     <body>
         <div class="ui-container">
             <div class="ui-files">
-                <p class="ui-dirname"><%= dirpath %></p>
-                <% files.forEach(function(file, i){ %>
-                <p>
-                    <span class="ui-line-num"><%= i %>: </span>
-                    <a title="<%= file %>" href="<%= dirpath %>/<%= file %>"> <%= file %></a>
-                </p>
-                <% }) %>
+                <p title="<%= dirpath %>" class="ui-dirname"><%= dirpath %></p>
+
+                <div class="ui-pillar"></div>
+                <div class="ui-files-list">
+                    <% files.forEach(function(file, i){ %>
+                    <p>
+                        <span title="<%= i %>" class="ui-line-num"><%= i %>: </span>
+                        <a title="<%= file %>" href="<%= dirpath %>/<%= file %>"> <%= file %></a>
+                    </p>
+                    <% }) %>
+                </div>
             </div>
             <p class="ui-back-panel">
                 <a class="ui-back" href="/"><img src="/<%= NengineAssetsRoot %>/images/404_to_index.png"/></a>

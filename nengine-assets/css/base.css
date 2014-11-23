@@ -11,9 +11,9 @@ body {
     top: 50%; left: 50%;
     text-align: center;
     width: 560px;
-    height: 376px;
+    height: 420px;
     font-size: 0;
-    margin: -188px 0 0 -280px;
+    margin: -210px 0 0 -280px;
     -webkit-text-size-adjust: none;
     -ms-text-size-adjust: none;
 }
@@ -21,7 +21,7 @@ body {
     border: medium none;
 }
 .ui-msg {
-    margin: 26px 0 58px;
+    margin: 26px 0 61px;
 }
 .ui-back-panel {
     height: 34px;

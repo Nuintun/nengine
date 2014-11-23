@@ -8,29 +8,45 @@ body .ui-container {
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     background: #fff;
     margin-bottom: 0;
-    padding: 46px 20px 20px;
     text-align: left;
-    height: 528px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    height: 594px;
     box-shadow: 0 0 13px #333;
 }
+.ui-pillar {
+    height: 36px;
+}
+.ui-files-list {
+    height: 558px;
+    padding: 0 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.ui-files-list p {
+    height: 31px;
+    line-height: 31px;
+}
 .ui-line-num,
-.ui-files a {
+.ui-files-list a {
     font-size: 16px;
-    line-height: 23px;
     text-decoration: none;
+    display: inline-block;
+    width: 873px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .ui-files .ui-dirname {
-    width: 100%;
+    width: 940px;
     height: 36px;
     line-height: 36px;
     font-size: 23px;
     font-weight: bold;
     background: #ccc;
     position: absolute;
-    margin: -46px 0 6px -20px;
-    text-indent: 10px;
+    padding: 0 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .ui-files a:hover {
     text-decoration: underline;
@@ -38,6 +54,9 @@ body .ui-container {
 }
 .ui-line-num {
     font-weight: bold;
+    width: 40px;
+    padding-right: 10px;
+    text-align: right;
 }
 .ui-back-panel {
     margin-top: 26px;

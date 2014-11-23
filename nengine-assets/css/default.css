@@ -8,5 +8,9 @@
 .ui-msg {
     font-size: 25px;
     color: #fff;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
