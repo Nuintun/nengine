@@ -26,7 +26,7 @@ module.exports = function (root){
             files: function (files){
                 return parse(root, '/html/files', files);
             },
-            default: parse(root, '/html/default')
+            'default': parse(root, '/html/default')
         },
         parse: parse
     };

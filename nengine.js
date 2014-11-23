@@ -88,7 +88,9 @@ Nengine.prototype = {
                         path = '';
                     }
 
-                    response.end(that.assets.html['files'](['a.html']));
+                    response.end(that.assets.html['files']({
+                        files: ['a.html']
+                    }));
                 }
             });
         });
