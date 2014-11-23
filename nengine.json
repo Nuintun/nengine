@@ -2,7 +2,7 @@
     "root": null,
     "port": 80,
     "maxage": 0,
-    "dotfiles": "ignore",
+    "dotfiles": "deny",
     "extensions": false,
     "index": [
         "index.html",
