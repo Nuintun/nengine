@@ -26,7 +26,6 @@ function defaultStatus(requset, response, err){
         that.logger.warn('Nengine server error: ' + requset.url);
 
         response.statusCode = err.status || 500;
-        console.log(Object.keys(err));
         response.end(that.assets.html['default'](
             response.statusCode,
             err.message || 'Nengine Server Error'
