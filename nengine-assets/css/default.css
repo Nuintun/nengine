@@ -2,8 +2,8 @@
 .ui-container .ui-status {
     color: #fff;
     font-size: 230px;
-    font-weight: bold;
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    transform: rotate(15deg);
 }
 .ui-container .ui-msg {
     font-size: 25px;
