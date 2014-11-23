@@ -11,20 +11,29 @@ var fs = require('fs'),
     nativeAssets = require('./native-assets'),
     defaults = JSON.parse(fs.readFileSync('nengine.json', 'utf-8'));
 
+// 调用内置状态页
 function defaultStatus(response, err){
     var that = this;
 
+    response.setHeader('Content-Type', 'text/html');
+
     if (err === null) {
+        that.logger.warn('Resource not found: ' + requset.url);
+
         response.statusCode = 404;
-        response.setHeader('Content-Type', 'text/html');
         response.end(that.assets.status['404']);
     } else {
+        that.logger.warn('Resource not found: ' + requset.url);
+
         response.statusCode = err.status || 500;
-        response.setHeader('Content-Type', 'text/plain');
-        response.end(JSON.stringify(err, null, '&nbsp;&nbsp;'));
+        response.end(that.assets.status['default'](
+            response.statusCode,
+            JSON.stringify(err, null, '&nbsp;&nbsp;')
+        ));
     }
 }
 
+// 服务器错误
 function nengineError(requset, response, send, err){
     var that = this,
         config = that.config,
@@ -39,18 +48,11 @@ function nengineError(requset, response, send, err){
             defaultStatus.call(that, response, err);
         });
     } else {
-        if (status === 404) {
-            that.logger.warn('Resource not found: ' + requset.url);
-            response.setHeader('Content-Type', 'text/html');
-            response.end(that.assets.html['404']);
-        } else {
-            that.logger.error('Server error: ' + err.message);
-            response.setHeader('Content-Type', 'text/plain');
-            response.end(JSON.stringify(err, null, '&nbsp;&nbsp;'));
-        }
+        defaultStatus.call(that, response, err);
     }
 }
 
+// 显示文件夹目录
 function viewFolder(requset, response){
     var that = this,
         config = that.config,
