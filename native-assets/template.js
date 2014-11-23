@@ -66,15 +66,6 @@ template.render = function (source, options){
  * @return  {String}    渲染好的字符串
  */
 var renderFile = template.renderFile = function (filename, data){
-    var defaults = template.defaults,
-        extname = path.extname(filename);
-
-    if (filename.charAt(0) === '/')
-        filename = path.join(defaults.base, filename);
-
-    if (defaults.extname.toLowerCase() !== extname.toLowerCase())
-        filename += defaults.extname;
-
     var fn = template.get(filename) || showDebugInfo({
             filename: filename,
             name: 'Render Error',
@@ -90,7 +81,15 @@ var renderFile = template.renderFile = function (filename, data){
  * @param   {Function}  编译好的函数
  */
 template.get = function (filename){
-    var cache;
+    var cache,
+        defaults = template.defaults,
+        extname = path.extname(filename);
+
+    if (filename.charAt(0) === '/')
+        filename = path.join(defaults.base, filename);
+
+    if (defaults.extname.toLowerCase() !== extname.toLowerCase())
+        filename += defaults.extname;
 
     if (cacheStore[filename]) {
         // 使用内存缓存
