@@ -15,14 +15,17 @@ body {
     -webkit-text-size-adjust: none;
     -ms-text-size-adjust: none;
 }
-.ui-container .ui-status{
-    font-size: 36px;
-}
 .ui-container img {
     border: medium none;
 }
+.ui-container .ui-status{
+    font-size: 36px;
+    font-weight: bold;
+}
 .ui-container .ui-msg {
     margin: 26px 0 58px;
+    font-size: 23px;
+    font-weight: bold;
 }
 .ui-container .ui-back-panel {
     height: 34px;
