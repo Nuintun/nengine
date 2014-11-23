@@ -10,7 +10,9 @@ body {
     position: absolute;
     top: 50%; left: 50%;
     text-align: center;
-    width: 560px; font-size: 0;
+    width: 560px;
+    height: 376px;
+    font-size: 0;
     margin: -188px 0 0 -280px;
     -webkit-text-size-adjust: none;
     -ms-text-size-adjust: none;
@@ -18,13 +20,13 @@ body {
 .ui-container img {
     border: medium none;
 }
-.ui-container .ui-msg {
+.ui-msg {
     margin: 26px 0 58px;
 }
-.ui-container .ui-back-panel {
+.ui-back-panel {
     height: 34px;
 }
-.ui-container .ui-back {
+.ui-back {
     display: inline-block;
 }
 @keyframes cloud-move {

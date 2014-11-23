@@ -1,11 +1,11 @@
 @import "./base.css";
-.ui-container .ui-status {
+.ui-status {
     color: #fff;
     font-size: 230px;
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     transform: rotate(15deg);
 }
-.ui-container .ui-msg {
+.ui-msg {
     font-size: 25px;
     color: #fff;
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;

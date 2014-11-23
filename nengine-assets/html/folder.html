@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head lang="en">
-        <meta charset="UTF-8">
-        <title></title>
+    <head>
+        <title>你大爷的！-出错了</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="renderer" content="webkit"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <link rel="stylesheet" type="text/css" href="/<%= NengineAssetsRoot %>/css/folder.css"/>
     </head>
     <body>
-        <% files.forEach(function(file){ %>
-        <a href="<%= dirpath %>/<%= file %>"><%= file %></a><br>
-        <% }) %>
+        <div class="ui-container">
+            <div class="ui-files">
+                <p class="ui-dirname"><%= dirpath %></p>
+                <% files.forEach(function(file, i){ %>
+                <p>
+                    <span class="ui-line-num"><%= i %>: </span>
+                    <a title="<%= file %>" href="<%= dirpath %>/<%= file %>"> <%= file %></a>
+                </p>
+                <% }) %>
+            </div>
+            <p class="ui-back-panel">
+                <a class="ui-back" href="/"><img src="/<%= NengineAssetsRoot %>/images/404_to_index.png"/></a>
+            </p>
+        </div>
+        <div class="ui-cloud"></div>
     </body>
 </html>
