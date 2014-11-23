@@ -2,6 +2,7 @@
  * Created by Newton on 2014/11/22.
  */
 var fs = require('fs'),
+    cwd = process.cwd(),
     dirname = __dirname,
     path = require('path'),
     http = require('http'),
@@ -78,7 +79,7 @@ function Nengine(options){
     var logger,
         config = merge(defaults, options);
 
-    config.root = config.root || process.cwd();
+    config.root = config.root || cwd;
     this.assets = nengineAssets(config.root);
 
     log4js.loadAppender('file');
