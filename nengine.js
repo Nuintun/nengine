@@ -14,7 +14,7 @@ var fs = require('fs'),
 // 调用内置状态页
 function defaultStatus(requset, response, err){
     var that = this;
-    
+
     response.setHeader('Content-Type', 'text/html');
 
     if (err === null) {
@@ -68,10 +68,7 @@ function viewFolder(requset, response){
     }
 
     fs.readdir(path.join(config.root, dirpath), function (err, files){
-        response.end(that.assets.html['folder']({
-            files: files,
-            dirpath: dirpath
-        }));
+        response.end(that.assets.html['folder'](dirpath, files));
     });
 }
 
