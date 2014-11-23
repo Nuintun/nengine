@@ -23,8 +23,8 @@ module.exports = function (root){
     return {
         html: {
             404: parse(root, '/html/404'),
-            files: function (files){
-                return parse(root, '/html/files', files);
+            folder: function (files){
+                return parse(root, '/html/folder', files);
             },
             'default': parse(root, '/html/default')
         },

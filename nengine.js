@@ -66,7 +66,7 @@ function viewFolder(requset, response){
     }
 
     fs.readdir(path.join(config.root, dirpath), function (err, files){
-        response.end(that.assets.html['files']({
+        response.end(that.assets.html['folder']({
             files: files,
             dirpath: dirpath
         }));
