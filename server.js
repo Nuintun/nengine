@@ -16,23 +16,25 @@ var fs = require('fs'),
 
 // 调用内置状态页
 function defaultStatus(requset, response, err){
-    var that = this;
+    var message,
+        that = this;
 
     response.setHeader('Content-Type', 'text/html');
 
     if (err === null) {
-        that.logger.warn('Resource not found: ' + requset.url);
+        message = 'Not Found';
+
+        that.logger.warn('Request: ' + requset.url + ' >>> ' + message);
 
         response.statusCode = 404;
         response.end(that.assets.html['404']);
     } else {
-        that.logger.warn('Nengine server error: ' + requset.url);
+        message = err.message || 'Nengine Server Error';
+
+        that.logger.warn('Request: ' + requset.url + ' >>> ' + message);
 
         response.statusCode = err.status || 500;
-        response.end(that.assets.html['default'](
-            response.statusCode,
-            err.message || 'Nengine Server Error'
-        ));
+        response.end(that.assets.html['default'](response.statusCode, message));
     }
 }
 
@@ -115,7 +117,7 @@ Nengine.prototype = {
                 typeof server === 'string' && response.setHeader('Server', server);
             }
 
-            that.logger.trace('Resource request: ' + requset.url);
+            that.logger.trace('Request: ' + requset.url);
 
             send(requset, response, function (err){
                 if (config.redirect || err !== undefined) {
