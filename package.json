@@ -9,22 +9,22 @@
     "homepage": "https://nuintun.github.io/nengine",
     "repository": {
         "type": "git",
-        "url": "https://github.com/nuintun/node-server.git"
+        "url": "https://github.com/nuintun/nengine.git"
     },
     "bugs": {
-        "url": "https://github.com/nuintun/node-server/issues",
+        "url": "https://github.com/nuintun/nengine/issues",
         "email": "nuintun@qq.com"
     },
     "licenses": [
         {
             "type": "MIT",
-            "url": "http://github.com/Nuintun/nengine-cli/LICENSE-MIT"
+            "url": "http://github.com/Nuintun/nengine/LICENSE-MIT"
         }
     ],
     "bin": {
         "nengine": "bin/nengine"
     },
-    "main": "server",
+    "main": "lib/nengine",
     "engines": {
         "node": ">=0.8.0"
     },
@@ -38,7 +38,8 @@
         "parseurl": "~1.3.0",
         "escape-html": "1.0.1",
         "parseurl": "~1.3.0",
-        "send": "~0.10.1"
+        "send": "~0.10.1",
+        "nopt": "~3.0.1"
     },
     "devDependencies": {
         "coveralls": "~2.10.0",

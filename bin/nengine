@@ -5,7 +5,7 @@ var config,
     fs = require('fs'),
     cwd = process.cwd(),
     path = require('path'),
-    Nengine = require('../server'),
+    Nengine = require('../lib/nengine'),
     configFile = path.join(cwd, 'nengine.json');
 
 // 从运行目录查找服务配置

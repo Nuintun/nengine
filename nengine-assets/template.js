@@ -337,7 +337,7 @@ function compiler(source, options){
     var compress = options.compress;
     var escape = options.escape;
     var line = 1;
-    var uniq = {$data: 1, $filename: 1, $utils: 1, $helpers: 1, $out: 1, $line: 1};
+    var uniq = { $data: 1, $filename: 1, $utils: 1, $helpers: 1, $out: 1, $line: 1 };
     var isNewEngine = ''.trim;// '__proto__' in {}
     var replaces = isNewEngine
         ? ["$out='';", "$out+=", ";", "$out"]
