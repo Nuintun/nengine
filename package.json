@@ -39,8 +39,8 @@
         "nopt": "~3.0.1"
     },
     "devDependencies": {
-        "coveralls": "~2.10.0",
-        "jscoverage": "~0.3.8",
+        "coveralls": "~2.11.2",
+        "jscoverage": "~0.5.9",
         "mocha-lcov-reporter": "~0.0.1"
     },
     "readmeFilename": "README.md"
