@@ -10,13 +10,13 @@ var config,
 
 // 从运行目录查找服务配置
 if (fs.existsSync(configFile)) {
-    // 获取服务配置
-    config = JSON.parse(fs.readFileSync(configFile, 'utf-8'));
+  // 获取服务配置
+  config = JSON.parse(fs.readFileSync(configFile, 'utf-8'));
 } else {
-    // 无配置文件默认设置运行目录为网站根目录
-    config = {
-        root: cwd
-    }
+  // 无配置文件默认设置运行目录为网站根目录
+  config = {
+    root: cwd
+  }
 }
 
 // 初始化服务器
