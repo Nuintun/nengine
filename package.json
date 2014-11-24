@@ -1,33 +1,38 @@
 {
     "name": "nengine",
     "version": "0.0.1",
-    "bin": {
-        "nengine": "bin/nengine"
-    },
-    "main": "server",
-    "license": "MIT",
-    "keywords": [
-        "server",
-        "http",
-        "http server"
-    ],
-    "homepage": "https://nuintun.github.io/node-server",
     "description": "A Node.js HTTP Server",
     "author": {
         "name": "Nuintun",
-        "email": "<nuintun@qq.com>"
+        "email": "nuintun@qq.com"
+    },
+    "homepage": "https://nuintun.github.io/nengine",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nuintun/node-server.git"
     },
     "bugs": {
         "url": "https://github.com/nuintun/node-server/issues",
         "email": "nuintun@qq.com"
     },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://github.com/Nuintun/nengine-cli/LICENSE-MIT"
+        }
+    ],
+    "bin": {
+        "nengine": "bin/nengine"
+    },
+    "main": "server",
     "engines": {
         "node": ">=0.8.0"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/nuintun/node-server.git"
-    },
+    "keywords": [
+        "server",
+        "http",
+        "http server"
+    ],
     "dependencies": {
         "log4js": "~0.6.21",
         "parseurl": "~1.3.0",
