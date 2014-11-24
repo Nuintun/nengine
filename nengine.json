@@ -16,5 +16,5 @@
     "redirect": false,
     "server": true,
     "status": {},
-    "logger": "INFO"
+    "logger": "ALL"
 }
