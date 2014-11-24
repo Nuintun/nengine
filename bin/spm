@@ -211,4 +211,3 @@ function getSimilarCommands(cmd, commands) {
     return getPoint(cmd, b) - getPoint(cmd, a);
   });
 }
-
