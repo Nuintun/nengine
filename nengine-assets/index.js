@@ -1,6 +1,13 @@
 /**
- * Created by Newton on 2014/11/22.
+ * nengine
+ * https://nuintun.github.io/nengine
+ *
+ * Licensed under the MIT license.
+ * https://github.com/Nuintun/nengine/blob/master/LICENSE
  */
+
+'use strict';
+
 var base = __dirname,
     path = require('path'),
     merge = require('../lib/merge'),

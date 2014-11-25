@@ -3,9 +3,9 @@
  * https://github.com/aui/artTemplate
  * Released under the MIT, BSD, and GPL Licenses
  */
-var fs = require('fs'),
-    path = require('path'),
-    FULLPATH_RE = /:[\\/]/;
+var fs = require('fs');
+var path = require('path');
+var FULLPATH_RE = /:[\\/]/;
 
 /**
  * 模板引擎
@@ -23,16 +23,6 @@ var template = function (filename, content){
 
 template.version = '3.0.3';
 
-/**
- * 设置全局配置
- * @name    template.config
- * @param   {String}    名称
- * @param   {Any}       值
- */
-template.config = function (name, value){
-    defaults[name] = value;
-};
-
 var defaults = template.defaults = {
     openTag: '<%',       // 逻辑语法开始标签
     closeTag: '%>',      // 逻辑语法结束标签
@@ -46,6 +36,16 @@ var defaults = template.defaults = {
 };
 
 var cacheStore = template.cache = {};
+
+/**
+ * 设置全局配置
+ * @name    template.config
+ * @param   {String}    名称
+ * @param   {Any}       值
+ */
+template.config = function (name, value){
+    defaults[name] = value;
+};
 
 /**
  * 渲染模板
@@ -81,9 +81,8 @@ var renderFile = template.renderFile = function (filename, data){
  * @param   {Function}  编译好的函数
  */
 template.get = function (filename){
-    var cache,
-        defaults = template.defaults,
-        extname = path.extname(filename);
+    var cache;
+    var extname = path.extname(filename);
 
     if (filename.charAt(0) === '/')
         filename = path.join(defaults.base, filename);
