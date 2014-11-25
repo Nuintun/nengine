@@ -20,7 +20,7 @@ if (fs.existsSync(configFile)) {
 }
 
 // 初始化服务器
-nengine = new Nengine(config);
+nengine = Nengine.create(config);
 
 // 启动服务器
 nengine.run();

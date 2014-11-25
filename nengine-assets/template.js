@@ -284,7 +284,7 @@ var compile = template.compile = function (source, options){
     };
 
     if (filename && options.cache) {
-        cacheStore[filename] = render;
+        cacheStore[filename] = RenderFn;
     }
 
     return RenderFn;
