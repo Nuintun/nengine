@@ -2,7 +2,7 @@
  * nengine
  * https://nuintun.github.io/nengine
  *
- * Licensed under the MIT license.
+ * Licensed under the MIT license
  * https://github.com/Nuintun/nengine/blob/master/LICENSE
  */
 
