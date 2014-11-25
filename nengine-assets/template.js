@@ -3,6 +3,12 @@
  * https://github.com/aui/artTemplate
  * Released under the MIT, BSD, and GPL Licenses
  */
+
+/**
+ * for jsdoc all type
+ * @typedef {(Any Type)} All
+ */
+
 var fs = require('fs');
 var path = require('path');
 var FULLPATH_RE = /:[\\/]/;
@@ -10,9 +16,9 @@ var FULLPATH_RE = /:[\\/]/;
 /**
  * 模板引擎
  * @name    template
- * @param   {String}            模板名
- * @param   {Object, String}    数据。如果为字符串则编译并缓存编译结果
- * @return  {String, Function}  渲染好的HTML字符串或者渲染方法
+ * @param   {String} filename           模板名
+ * @param   {Object, String} content    数据。如果为字符串则编译并缓存编译结果
+ * @return  {String, Function}          渲染好的HTML字符串或者渲染方法
  */
 var template = function (filename, content){
     return typeof content === 'string' ?
@@ -40,8 +46,8 @@ var cacheStore = template.cache = {};
 /**
  * 设置全局配置
  * @name    template.config
- * @param   {String}    名称
- * @param   {Any}       值
+ * @param   {String} name    名称
+ * @param   {All} value      值
  */
 template.config = function (name, value){
     defaults[name] = value;
@@ -50,9 +56,9 @@ template.config = function (name, value){
 /**
  * 渲染模板
  * @name    template.render
- * @param   {String}    模板
- * @param   {Object}    数据
- * @return  {String}    渲染好的字符串
+ * @param   {String} source    模板
+ * @param   {Object} options   数据
+ * @return  {String}           渲染好的字符串
  */
 template.render = function (source, options){
     return compile(source, options);
@@ -77,8 +83,8 @@ var renderFile = template.renderFile = function (filename, data){
 
 /**
  * 获取编译缓存（可由外部重写此方法）
- * @param   {String}    模板名
- * @param   {Function}  编译好的函数
+ * @param   {String} filename   模板名
+ * @return   {Function}         编译好的函数
  */
 template.get = function (filename){
     var cache;
@@ -177,8 +183,8 @@ var utils = template.utils = {
 /**
  * 添加模板辅助方法
  * @name    template.helper
- * @param   {String}    名称
- * @param   {Function}  方法
+ * @param   {String} name       名称
+ * @param   {Function} helper   方法
  */
 template.helper = function (name, helper){
     helpers[name] = helper;
@@ -195,7 +201,9 @@ template.onerror = function (e){
     var message = 'Template Error\n\n';
 
     for (var name in e) {
-        message += '<' + name + '>\n' + e[name] + '\n\n';
+        if (e.hasOwnProperty(name)) {
+            message += '<' + name + '>\n' + e[name] + '\n\n';
+        }
     }
 
     if (typeof console === 'object') {
@@ -235,7 +243,7 @@ var compile = template.compile = function (source, options){
     options = options || {};
 
     for (var name in defaults) {
-        if (options[name] === undefined) {
+        if (defaults.hasOwnProperty(name) && options[name] === undefined) {
             options[name] = defaults[name];
         }
     }
@@ -251,8 +259,12 @@ var compile = template.compile = function (source, options){
         return showDebugInfo(e);
     }
 
-    // 对编译结果进行一次包装
-    function render(data){
+    /**
+     * 对编译结果进行一次包装
+     * @param   {Object} data
+     * @return  {String}
+     */
+    function RenderFn(data){
         try {
             return new Render(data, filename) + '';
         } catch (e) {
@@ -266,8 +278,8 @@ var compile = template.compile = function (source, options){
         }
     }
 
-    render.prototype = Render.prototype;
-    render.toString = function (){
+    RenderFn.prototype = Render.prototype;
+    RenderFn.toString = function (){
         return Render.toString();
     };
 
@@ -275,7 +287,7 @@ var compile = template.compile = function (source, options){
         cacheStore[filename] = render;
     }
 
-    return render;
+    return RenderFn;
 };
 
 // 数组迭代
@@ -437,6 +449,7 @@ function compiler(source, options){
             // 记录行号
             code = code.replace(/\n/g, function (){
                 line++;
+
                 return "$line=" + line + ";";
             });
         }
