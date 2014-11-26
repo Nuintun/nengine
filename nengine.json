@@ -1,5 +1,4 @@
 {
-    "root": null,
     "port": 80,
     "maxage": 0,
     "dotfiles": "deny",
@@ -16,5 +15,5 @@
     "redirect": false,
     "server": true,
     "status": {},
-    "logger": "ALL"
+    "logger": "INFO"
 }
