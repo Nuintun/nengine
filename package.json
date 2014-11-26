@@ -1,7 +1,7 @@
 {
     "name": "nengine",
-    "version": "0.0.2",
-    "description": "A Node.js HTTP Server",
+    "version": "0.0.3",
+    "description": "The nodejs http server",
     "author": {
         "name": "Nuintun",
         "email": "nuintun@qq.com"
