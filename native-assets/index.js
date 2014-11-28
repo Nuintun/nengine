@@ -10,16 +10,23 @@
 
 var base = __dirname,
     path = require('path'),
-    merge = require('../lib/merge'),
+    mix = require('../lib/mix'),
     template = require('./template');
-
+// Set template config
 template.config('base', base);
 template.config('compress', true);
 
-function parse(root, filepath, data){
+/**
+ * Render template
+ * @param root
+ * @param filepath
+ * @param data
+ * @returns {String|Function|*|exports}
+ */
+function render(root, filepath, data){
     var relapath = '/' + path.relative(root, base).replace(/\\/g, '/');
 
-    data = merge({}, data);
+    data = mix({}, data);
 
     data.NengineAssetsRoot = relapath;
 
@@ -29,20 +36,20 @@ function parse(root, filepath, data){
 module.exports = function (root){
     return {
         html: {
-            404: parse(root, '/html/404'),
+            404: render(root, '/html/404'),
             folder: function (dirpath, files){
-                return parse(root, '/html/folder', {
+                return render(root, '/html/folder', {
                     files: files,
                     dirpath: dirpath
                 });
             },
             'default': function (status, message){
-                return parse(root, '/html/default', {
+                return render(root, '/html/default', {
                     status: status,
                     message: message
                 });
             }
         },
-        parse: parse
+        render: render
     };
 };
