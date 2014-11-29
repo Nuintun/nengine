@@ -1,7 +1,7 @@
 {
     "port": 80,
     "maxage": 0,
-    "dotfiles": "deny",
+    "dotfiles": "ignore",
     "extensions": false,
     "index": [
         "index.html",
@@ -12,7 +12,7 @@
         "main.htm"
     ],
     "lastModified": true,
-    "redirect": false,
+    "redirect": true,
     "server": true,
     "status": {},
     "logger": "INFO"
