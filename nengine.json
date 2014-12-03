@@ -1,8 +1,8 @@
 {
     "port": 80,
-    "maxage": 0,
-    "dotfiles": "ignore",
-    "extensions": false,
+    "maxAge": 0,
+    "dotFiles": "ignore",
+    "extensions": [],
     "index": [
         "index.html",
         "index.htm",
@@ -11,9 +11,7 @@
         "main.html",
         "main.htm"
     ],
-    "lastModified": true,
-    "redirect": true,
+    "lastModified": false,
     "server": true,
-    "status": {},
-    "logger": "INFO"
+    "status": {}
 }
