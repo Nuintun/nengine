@@ -17,7 +17,7 @@
                     <% files.forEach(function(file, i){ %>
                     <p>
                         <span title="<%= i %>" class="ui-line-num"><%= i %>: </span>
-                        <a title="<%= file %>" href="<%= dirpath %>/<%= file %>"> <%= file %></a>
+                        <a title="<%= file %>" href="<%= dirpath %><%= file %>"> <%= file %></a>
                     </p>
                     <% }) %>
                 </div>
