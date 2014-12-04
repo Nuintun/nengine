@@ -1,4 +1,4 @@
 Nengine
 ==========
 
->A Node.js HTTP Server
+>A static node http server
