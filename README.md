@@ -8,7 +8,7 @@ Getting started
 
 ### Install
 
-```bash
+```
 $ npm install nengine
 ```
 `
