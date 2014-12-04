@@ -48,12 +48,21 @@ you can config server by `nengine.json`:
 ```
 
 `port`: server port. `{Number}`
+
 `directory`: show directory, you can set "allow", "deny", "ignore". `{String}`
+
 `dotFiles`: show dot file, like directory. `{String}`
+
 `maxAge`: set max-age, unit: seconds and also you can set like "2 days". `{Number|String}`
+
 `index`: set default document. `{Array|String}`
+
 `extensions`: set default extname, program will automatic add extname. `{Array|String}`
+
 `etag`: set etag. `{Boolean}`
+
 `lastModified`: set lastModified. `{Boolean}`
+
 `range`: set file stream range, if it is not necessary to do not set. `{Array}`
+
 `status`: set custom error page. `{Object}`
