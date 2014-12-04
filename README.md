@@ -28,7 +28,7 @@ $ nengine -h
 ```
 for help.
 
-you can config server by `nengine.json`:
+you can config server by `nengine.json` under server root:
 ```json
 {
     "port": 80,
