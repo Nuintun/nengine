@@ -4,10 +4,7 @@
  * Released under the MIT, BSD, and GPL Licenses
  */
 
-/**
- * for jsdoc all type
- * @typedef {(Any Type)} All
- */
+'use strict';
 
 var fs = require('fs');
 var path = require('path');
@@ -47,7 +44,7 @@ var cacheStore = template.cache = {};
  * 设置全局配置
  * @name    template.config
  * @param   {String} name    名称
- * @param   {All} value      值
+ * @param   {*} value      值
  */
 template.config = function (name, value){
     defaults[name] = value;
