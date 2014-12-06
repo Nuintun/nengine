@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>∩_∩ 文件列表</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="renderer" content="webkit"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <link rel="stylesheet" type="text/css" href="<%= NengineAssetsRoot %>/css/folder.css"/>
-    </head>
-    <body>
-        <div class="ui-container">
-            <div class="ui-files">
-                <p title="<%= dirpath %>" class="ui-dirname"><%= dirpath %></p>
+  <head>
+    <title>∩_∩ 文件列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" type="text/css" href="<%= NengineAssetsRoot %>/css/folder.css"/>
+  </head>
+  <body>
+    <div class="ui-container">
+      <div class="ui-files">
+        <p title="<%= dirpath %>" class="ui-dirname"><%= dirpath %></p>
 
-                <div class="ui-pillar"></div>
-                <div class="ui-files-list">
-                    <% files.forEach(function(file, i){ %>
-                    <p>
-                        <span title="<%= i %>" class="ui-line-num"><%= i %>: </span>
-                        <a title="<%= file %>" href="<%= dirpath %><%= file %>"> <%= file %></a>
-                    </p>
-                    <% }) %>
-                </div>
-            </div>
-            <p class="ui-back-panel">
-                <a class="ui-back" href="/"><img src="<%= NengineAssetsRoot %>/images/404_to_index.png"/></a>
-            </p>
+        <div class="ui-pillar"></div>
+        <div class="ui-files-list">
+          <% files.forEach(function(file, i){ %>
+          <p>
+            <span title="<%= i %>" class="ui-line-num"><%= i %>: </span>
+            <a title="<%= file %>" href="<%= dirpath %><%= file %>"> <%= file %></a>
+          </p>
+          <% }) %>
         </div>
-        <div class="ui-cloud"></div>
-    </body>
+      </div>
+      <p class="ui-back-panel">
+        <a class="ui-back" href="/"><img src="<%= NengineAssetsRoot %>/images/404_to_index.png"/></a>
+      </p>
+    </div>
+    <div class="ui-cloud"></div>
+  </body>
 </html>

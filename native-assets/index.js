@@ -9,9 +9,9 @@
 'use strict';
 
 var base = __dirname,
-    path = require('path'),
-    mix = require('../lib/mix'),
-    template = require('./template');
+  path = require('path'),
+  mix = require('../lib/mix'),
+  template = require('./template');
 // Set template config
 template.config('base', base);
 template.config('compress', true);
@@ -24,32 +24,32 @@ template.config('compress', true);
  * @returns {String|Function|*|exports}
  */
 function render(root, filepath, data){
-    var relapath = '/' + path.relative(root, base).replace(/\\/g, '/');
+  var relapath = '/' + path.relative(root, base).replace(/\\/g, '/');
 
-    data = mix({}, data);
+  data = mix({}, data);
 
-    data.NengineAssetsRoot = relapath;
+  data.NengineAssetsRoot = relapath;
 
-    return template(filepath, data);
+  return template(filepath, data);
 }
 
 module.exports = function (root){
-    return {
-        html: {
-            404: render(root, '/html/404'),
-            folder: function (dirpath, files){
-                return render(root, '/html/folder', {
-                    files: files,
-                    dirpath: dirpath
-                });
-            },
-            'default': function (status, message){
-                return render(root, '/html/default', {
-                    status: status,
-                    message: message
-                });
-            }
-        },
-        render: render
-    };
+  return {
+    html: {
+      404: render(root, '/html/404'),
+      folder: function (dirpath, files){
+        return render(root, '/html/folder', {
+          files: files,
+          dirpath: dirpath
+        });
+      },
+      'default': function (status, message){
+        return render(root, '/html/default', {
+          status: status,
+          message: message
+        });
+      }
+    },
+    render: render
+  };
 };

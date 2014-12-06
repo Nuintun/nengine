@@ -1,62 +1,62 @@
 body, div, p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 body {
-    height: 100%;
-    background: url("../images/error_bg.jpg") repeat-x 0 0 #67ACE4;
+  height: 100%;
+  background: url("../images/error_bg.jpg") repeat-x 0 0 #67ACE4;
 }
 .ui-container {
-    position: absolute;
-    top: 50%; left: 50%;
-    text-align: center;
-    width: 560px;
-    height: 420px;
-    font-size: 0;
-    margin: -210px 0 0 -280px;
-    -webkit-text-size-adjust: none;
-    -ms-text-size-adjust: none;
+  position: absolute;
+  top: 50%; left: 50%;
+  text-align: center;
+  width: 560px;
+  height: 420px;
+  font-size: 0;
+  margin: -210px 0 0 -280px;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
 }
 .ui-container img {
-    border: medium none;
+  border: medium none;
 }
 .ui-msg {
-    margin: 26px 0 61px;
+  margin: 26px 0 61px;
 }
 .ui-back-panel {
-    height: 34px;
+  height: 34px;
 }
 .ui-back {
-    display: inline-block;
+  display: inline-block;
 }
 @keyframes cloud-move {
-    from { background-position: 0 0; }
-    to { background-position: -1680px 0; }
+  from { background-position: 0 0; }
+  to { background-position: -1680px 0; }
 }
 @-o-keyframes cloud-move {
-    from { background-position: 0 0; }
-    to { background-position: -1680px 0; }
+  from { background-position: 0 0; }
+  to { background-position: -1680px 0; }
 }
 @-ms-keyframes cloud-move {
-    from { background-position: 0 0; }
-    to { background-position: -1680px 0; }
+  from { background-position: 0 0; }
+  to { background-position: -1680px 0; }
 }
 @-moz-keyframes cloud-move {
-    from { background-position: 0 0; }
-    to { background-position: -1680px 0; }
+  from { background-position: 0 0; }
+  to { background-position: -1680px 0; }
 }
 @-webkit-keyframes cloud-move {
-    from { background-position: 0 0; }
-    to { background-position: -1680px 0; }
+  from { background-position: 0 0; }
+  to { background-position: -1680px 0; }
 }
 .ui-cloud {
-    position: fixed;
-    left: 0; bottom: 0; z-index: -1;
-    width: 100%; height: 170px;
-    background: url("../images/error_cloud.png") repeat-x scroll 0 0 transparent;
-    animation: cloud-move 30s linear infinite;
-    -o-animation: cloud-move 30s linear infinite;
-    -ms-animation: cloud-move 30s linear infinite;
-    -moz-animation: cloud-move 30s linear infinite;
-    -webkit-animation: cloud-move 30s linear infinite;
+  position: fixed;
+  left: 0; bottom: 0; z-index: -1;
+  width: 100%; height: 170px;
+  background: url("../images/error_cloud.png") repeat-x scroll 0 0 transparent;
+  animation: cloud-move 30s linear infinite;
+  -o-animation: cloud-move 30s linear infinite;
+  -ms-animation: cloud-move 30s linear infinite;
+  -moz-animation: cloud-move 30s linear infinite;
+  -webkit-animation: cloud-move 30s linear infinite;
 }
