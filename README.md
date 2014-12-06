@@ -31,19 +31,18 @@ for help.
 you can config server by `nengine.json` under server root:
 ```json
 {
-    "port": 80,
-    "directory": "allow",
-	"dotFiles": "deny",
-	"maxAge": 2592000,
-	"index": ["index.html"],
-	"extensions": ["html"],
-	"etag": true,
-	"lastModified": true,
-	"range": [0, 1023],
-	"status": {
-	    "404": "/error/404.html",
-	    "default": "/error/default.html"
-	}
+  "port": 80,
+  "directory": "allow",
+  "dotFiles": "deny",
+  "maxAge": 2592000,
+  "index": ["index.html"],
+  "extensions": ["html"],
+  "etag": true,
+  "lastModified": true,
+  "status": {
+    "404": "/error/404.html",
+	"default": "/error/default.html"
+  }
 }
 ```
 
@@ -62,7 +61,5 @@ you can config server by `nengine.json` under server root:
 `etag`: set etag. `{Boolean}`
 
 `lastModified`: set lastModified. `{Boolean}`
-
-`range`: set file stream range, if it is not necessary to do not set. `{Array}`
 
 `status`: set custom error page. `{Object}`
