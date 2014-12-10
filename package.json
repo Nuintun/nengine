@@ -31,22 +31,11 @@
     "http server"
   ],
   "dependencies": {
-    "ms": "~0.7.0",
-    "etag": "~1.5.1",
     "nopt": "~3.0.1",
-    "fresh": "~0.2.4",
-    "mime": "~1.2.11",
-    "destroy": "1.0.3",
     "colors": "~1.0.3",
     "log4js": "~0.6.21",
-    "escape-html": "~1.0.1",
-    "on-finished": "~2.1.1",
-    "range-parser": "~1.0.2"
+    "file-send": "~0.0.2"
   },
-  "devDependencies": {
-    "coveralls": "~2.11.2",
-    "jscoverage": "~0.5.9",
-    "mocha-lcov-reporter": "~0.0.1"
-  },
+  "devDependencies": {},
   "readmeFilename": "README.md"
 }
