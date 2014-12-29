@@ -35,6 +35,12 @@ function render(root, filepath, data){
   return template(filepath, data);
 }
 
+/**
+ * Date format
+ * @param date
+ * @param format
+ * @returns {XML|string|void}
+ */
 function dateFormat(date, format){
   format = format || 'yyyy-MM-dd hh:mm:ss';
 
