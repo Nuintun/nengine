@@ -4,7 +4,7 @@ body, div, p {
 }
 body {
   height: 100%;
-  background: url("../images/error_bg.jpg") repeat-x 0 0 #67ace4;
+  background: url(../images/error_bg.jpg) repeat-x 0 0 #67ace4;
 }
 @font-face {
   font-family: nengine;
@@ -26,7 +26,7 @@ body {
   /* Better Font Rendering */
   -webkit-font-smoothing: antialiased;
 
-  /* min font size */
+  /* Min Font Size */
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: none;
 }
@@ -77,10 +77,10 @@ body {
   position: fixed;
   left: 0; bottom: 0; z-index: -1;
   width: 100%; height: 170px;
-  background: url("../images/error_cloud.png") repeat-x scroll 0 0 transparent;
-  animation: cloud-move 30s linear infinite;
+  background: url(../images/error_cloud.png) repeat-x scroll 0 0 transparent;
   -o-animation: cloud-move 30s linear infinite;
   -ms-animation: cloud-move 30s linear infinite;
   -moz-animation: cloud-move 30s linear infinite;
   -webkit-animation: cloud-move 30s linear infinite;
+  animation: cloud-move 30s linear infinite;
 }
