@@ -37,8 +37,8 @@
 }
 .ui-files .ui-dirname {
   width: 940px;
-  height: 36px;
-  line-height: 36px;
+  height: 35px;
+  line-height: 35px;
   font-size: 23px;
   font-weight: bold;
   background: #ccc;
@@ -47,10 +47,14 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  border-bottom: 1px solid #aaa;
 }
 .ui-files a:hover {
   text-decoration: underline;
   color: #f00;
+}
+.ui-files a:visited {
+  color: #666;
 }
 .ui-line-num {
   font-weight: bold;
