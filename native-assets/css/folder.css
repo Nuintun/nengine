@@ -1,11 +1,9 @@
-@import "./base.css";
-body .ui-container {
+.ui-content {
   width: 960px;
   height: 654px;
   margin: -327px 0 0 -480px;
 }
 .ui-files {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   background: #fff;
   margin-bottom: 0;
   text-align: left;
@@ -58,6 +56,6 @@ body .ui-container {
   padding-right: 10px;
   text-align: right;
 }
-.ui-back-panel {
+.ui-home {
   margin-top: 26px;
 }

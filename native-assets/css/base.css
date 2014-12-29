@@ -1,36 +1,45 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
 body, div, p {
   margin: 0;
   padding: 0;
 }
 body {
-  height: 100%;
-  background: url(../images/error_bg.jpg) repeat-x 0 0 #67ace4;
+  background: url(../images/sky.jpg) repeat-x 0 0 #67ace4;
+  font: 14px/1.5 Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 @font-face {
   font-family: nengine;
-  src: url(../fonts/nengine.eot?jjrao2);
-  src: url(../fonts/nengine.eot?#iefixjjrao2) format("embedded-opentype"),
-  url(../fonts/nengine.svg?jjrao2#nengine) format("svg"),
-  url(../fonts/nengine.woff?jjrao2) format("woff"),
-  url(../fonts/nengine.ttf?jjrao2) format("truetype");
+  src: url(../fonts/nengine.eot?nuintun);
+  src: url(../fonts/nengine.eot?#iefixnuintun) format("embedded-opentype"),
+  url(../fonts/nengine.svg?nuintun#nengine) format("svg"),
+  url(../fonts/nengine.woff?nuintun) format("woff"),
+  url(../fonts/nengine.ttf?nuintun) format("truetype");
   font-weight: normal;
   font-style: normal;
 }
-.iconfont {
+.ui-icon-font {
   font-family: nengine, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
 
-  /* Better Font Rendering */
-  -webkit-font-smoothing: antialiased;
+  /* Enable Ligatures ================ */
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
 
-  /* Min Font Size */
-  -webkit-text-size-adjust: none;
-  -ms-text-size-adjust: none;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.ui-container {
+.ui-content {
   position: absolute;
   top: 50%; left: 50%;
   text-align: center;
@@ -41,17 +50,16 @@ body {
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: none;
 }
-.ui-container img {
+.ui-content img {
   border: medium none;
 }
-.ui-msg {
-  margin: 26px 0 61px;
-}
-.ui-back-panel {
-  height: 34px;
-}
-.ui-back {
+.ui-home {
   display: inline-block;
+  width: 174px; height: 42px;
+  background: url(../images/home.png) no-repeat center transparent;
+}
+.ui-home:hover {
+  background: url(../images/home-hover.png) no-repeat center transparent;
 }
 @keyframes cloud-move {
   from { background-position: 0 0; }
@@ -77,7 +85,7 @@ body {
   position: fixed;
   left: 0; bottom: 0; z-index: -1;
   width: 100%; height: 170px;
-  background: url(../images/error_cloud.png) repeat-x scroll 0 0 transparent;
+  background: url(../images/cloud.png) repeat-x scroll 0 0 transparent;
   -o-animation: cloud-move 30s linear infinite;
   -ms-animation: cloud-move 30s linear infinite;
   -moz-animation: cloud-move 30s linear infinite;
