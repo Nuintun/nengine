@@ -13,10 +13,10 @@ var base = __dirname,
   path = require('path'),
   mix = require('../lib/mix'),
   template = require('./template');
+
 // Set template config
 template.config('base', base);
 template.config('compress', true);
-template.config('cache', false);
 
 /**
  * Render template
