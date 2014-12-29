@@ -28,7 +28,7 @@ function render(root, filepath, data){
 
   data = mix({}, data);
 
-  data.NengineAssetsRoot = relapath;
+  data.ROOT = relapath;
 
   return template(filepath, data);
 }
@@ -36,7 +36,6 @@ function render(root, filepath, data){
 module.exports = function (root){
   return {
     html: {
-      404: render(root, '/html/404'),
       folder: function (dirpath, files){
         return render(root, '/html/folder', {
           files: files,
@@ -44,7 +43,7 @@ module.exports = function (root){
         });
       },
       'default': function (status, message){
-        return render(root, '/html/default', {
+        return render(root, '/html/status', {
           status: status,
           message: message
         });
