@@ -4,7 +4,31 @@ body, div, p {
 }
 body {
   height: 100%;
-  background: url("../images/error_bg.jpg") repeat-x 0 0 #67ACE4;
+  background: url("../images/error_bg.jpg") repeat-x 0 0 #67ace4;
+}
+@font-face {
+  font-family: nengine;
+  src: url(../fonts/nengine.eot?jjrao2);
+  src: url(../fonts/nengine.eot?#iefixjjrao2) format("embedded-opentype"),
+  url(../fonts/nengine.svg?jjrao2#nengine) format("svg"),
+  url(../fonts/nengine.woff?jjrao2) format("woff"),
+  url(../fonts/nengine.ttf?jjrao2) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.iconfont {
+  font-family: nengine, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+
+  /* min font size */
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
 }
 .ui-container {
   position: absolute;
