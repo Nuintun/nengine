@@ -24,11 +24,13 @@
   line-height: 31px;
 }
 .ui-line-num,
+.ui-file-type,
+.ui-file-mtime,
 .ui-files-list a {
   font-size: 16px;
   text-decoration: none;
   display: inline-block;
-  width: 873px;
+  width: 630px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -55,6 +57,14 @@
   width: 40px;
   padding-right: 10px;
   text-align: right;
+}
+.ui-file-type {
+  width: 55px;
+  color: #666;
+}
+.ui-file-mtime {
+  width: 188px;
+  color: #666;
 }
 .ui-home {
   margin-top: 26px;
