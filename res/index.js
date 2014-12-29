@@ -9,12 +9,14 @@
 'use strict';
 
 var base = __dirname,
+  fs = require('fs'),
   path = require('path'),
   mix = require('../lib/mix'),
   template = require('./template');
 // Set template config
 template.config('base', base);
 template.config('compress', true);
+template.config('cache', false);
 
 /**
  * Render template
@@ -36,10 +38,31 @@ function render(root, filepath, data){
 module.exports = function (root){
   return {
     html: {
-      folder: function (dirpath, files){
+      folder: function (dirname, files, cwd){
+        var stats = [];
+
+        files.forEach(function (file){
+          var stat;
+          try {
+            stat = fs.statSync(path.join(cwd, file));
+
+            stats.push({
+              name: file,
+              type: stat.isDirectory() ? 'DIR' : 'FILE',
+              mtime: stat.mtime
+            });
+          } catch (e) {
+            stats.push({
+              name: file,
+              type: 'UNKNOW',
+              mtime: 'UNKNOW'
+            });
+          }
+        });
+
         return render(root, '/html/folder', {
-          files: files,
-          dirpath: dirpath
+          files: stats,
+          dirname: dirname
         });
       },
       'default': function (status, message){

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>∩_∩ 文件列表</title>
+    <title>∩_∩ Directory</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="renderer" content="webkit"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -11,16 +11,17 @@
   <body>
     <div class="ui-content">
       <div class="ui-files">
-        <p title="<%= dirpath %>" class="ui-dirname"><%= dirpath %></p>
+        <p title="<%= dirname %>" class="ui-dirname"><%= dirname %></p>
 
         <div class="ui-pillar"></div>
         <div class="ui-files-list">
           <% files.forEach(function(file, i){ %>
+          <%= print(file); %>
           <p>
             <span title="<%= i %>" class="ui-line-num"><%= i %>: </span>
-            <a title="<%= file %>" href="<%= dirpath %><%= file %>"> <%= file %></a>
+            <a title="<%= file.name %>" href="<%= dirname %><%= file.name %>"> <%= file.name %></a>
           </p>
-          <% }) %>
+          <% }); %>
         </div>
       </div>
       <p><a title="Home" class="ui-home" href="/">Home</a></p>
