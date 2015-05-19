@@ -393,15 +393,15 @@ function compiler(source, options){
   // 调试语句
   if (debug) {
     code = "try{" + code + "}catch(e){"
-    + "throw {"
-    + "filename:$filename,"
-    + "name:'Render Error',"
-    + "message:e.message,"
-    + "line:$line,"
-    + "source:" + stringify(source)
-    + ".split(/\\n/)[$line-1].replace(/^\\s+/,'')"
-    + "};"
-    + "}";
+      + "throw {"
+      + "filename:$filename,"
+      + "name:'Render Error',"
+      + "message:e.message,"
+      + "line:$line,"
+      + "source:" + stringify(source)
+      + ".split(/\\n/)[$line-1].replace(/^\\s+/,'')"
+      + "};"
+      + "}";
   }
 
   try {

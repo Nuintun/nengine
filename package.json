@@ -31,10 +31,10 @@
     "http server"
   ],
   "dependencies": {
-    "nopt": "~3.0.1",
-    "colors": "~1.0.3",
-    "log4js": "~0.6.21",
-    "file-send": "~0.0.2"
+    "nopt": "^3.0.2",
+    "colors": "^1.1.0",
+    "log4js": "^0.6.25",
+    "file-send": "^0.1.0"
   },
   "devDependencies": {},
   "readmeFilename": "README.md"
