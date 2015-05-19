@@ -44,7 +44,7 @@ you can config server by `nengine.json` under server root:
   "lastModified": true,
   "status": {
     "404": "/error/404.html",
-	  "default": "/error/default.html"
+    "default": "/error/default.html"
   }
 }
 ```
