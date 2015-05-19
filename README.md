@@ -3,6 +3,9 @@ Nengine
 
 >A static node http server
 
+>![Node Version][node-image]
+>[![Dependencies][david-image]][david-url]
+
 Getting started
 ==========
 
@@ -63,3 +66,11 @@ you can config server by `nengine.json` under server root:
 `lastModified`: set lastModified. `{Boolean}`
 
 `status`: set custom error page. `{Object}`
+
+## License
+
+[MIT](LICENSE)
+
+[david-image]: http://img.shields.io/david/nuintun/nengine.svg?style=flat-square
+[david-url]: https://david-dm.org/Nuintun/nengine
+[node-image]: http://img.shields.io/node/v/nengine.svg?style=flat-square
