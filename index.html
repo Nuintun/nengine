@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Nengine by Nuintun</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/Nuintun/nengine">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/Nuintun/nengine/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/Nuintun/nengine/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Nengine</h1>
+          <p>A static node http server</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/Nuintun">Nuintun</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="nengine" class="anchor" href="#nengine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nengine</h1>
+
+<blockquote>
+<p>A static node http server</p>
+
+<p><a href="https://www.npmjs.org/package/nengine"><img src="http://img.shields.io/npm/v/nengine.svg?style=flat-square" alt="NPM Version"></a>
+<a href="https://www.npmjs.org/package/nengine"><img src="http://img.shields.io/npm/dm/nengine.svg?style=flat-square" alt="Download Status"></a>
+<img src="http://img.shields.io/node/v/nengine.svg?style=flat-square" alt="Node Version">
+<a href="https://david-dm.org/Nuintun/nengine"><img src="http://img.shields.io/david/nuintun/nengine.svg?style=flat-square" alt="Dependencies"></a></p>
+</blockquote>
+
+<h1>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting started</h1>
+
+<h3>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h3>
+
+<div class="highlight highlight-shell"><pre>$ npm install nengine</pre></div>
+
+<p><em><code>Note: nengine require nengine-cli</code></em></p>
+
+<h3>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h3>
+
+<p>if you have installed <code>nengine-cli</code> and <code>nengine</code>, you can run nengine by command:</p>
+
+<div class="highlight highlight-shell"><pre>$ nengine</pre></div>
+
+<p>and use:</p>
+
+<div class="highlight highlight-shell"><pre>$ nengine -h</pre></div>
+
+<p>for help.</p>
+
+<p>you can config server by <code>nengine.json</code> under server root:</p>
+
+<div class="highlight highlight-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>port<span class="pl-pds">"</span></span>: <span class="pl-c1">80</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>directory<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>allow<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>dotFiles<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>deny<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>maxAge<span class="pl-pds">"</span></span>: <span class="pl-c1">2592000</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>index<span class="pl-pds">"</span></span>: [<span class="pl-s"><span class="pl-pds">"</span>index.html<span class="pl-pds">"</span></span>],
+  <span class="pl-s"><span class="pl-pds">"</span>extensions<span class="pl-pds">"</span></span>: [<span class="pl-s"><span class="pl-pds">"</span>html<span class="pl-pds">"</span></span>],
+  <span class="pl-s"><span class="pl-pds">"</span>etag<span class="pl-pds">"</span></span>: <span class="pl-c1">true</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>lastModified<span class="pl-pds">"</span></span>: <span class="pl-c1">true</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>404<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>/error/404.html<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>default<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>/error/default.html<span class="pl-pds">"</span></span>
+  }
+}</pre></div>
+
+<p><code>port</code>: server port. <code>{Number}</code></p>
+
+<p><code>directory</code>: show directory, you can set "allow", "deny", "ignore". <code>{String}</code></p>
+
+<p><code>dotFiles</code>: show dot file, like directory. <code>{String}</code></p>
+
+<p><code>maxAge</code>: set max-age, unit: seconds and also you can set like "2 days". <code>{Number|String}</code></p>
+
+<p><code>index</code>: set default document. <code>{Array|String}</code></p>
+
+<p><code>extensions</code>: set default extname, program will automatic add extname. <code>{Array|String}</code></p>
+
+<p><code>etag</code>: set etag. <code>{Boolean}</code></p>
+
+<p><code>lastModified</code>: set lastModified. <code>{Boolean}</code></p>
+
+<p><code>status</code>: set custom error page. <code>{Object}</code></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="LICENSE">MIT</a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
