@@ -34,7 +34,7 @@
     "nopt": "^3.0.2",
     "colors": "^1.1.0",
     "log4js": "^0.6.25",
-    "file-send": "^0.1.0"
+    "file-send": "^0.1.1"
   },
   "devDependencies": {},
   "readmeFilename": "README.md"
