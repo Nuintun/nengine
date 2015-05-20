@@ -17,7 +17,7 @@ Getting started
 $ npm install nengine
 ```
 
-`*Note: nengine require nengine-cli*`
+*`Note: nengine require nengine-cli`*
 
 ### Introduction
 
