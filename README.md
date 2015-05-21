@@ -76,7 +76,7 @@ you can config server by `nengine.json` under server root:
 [MIT](LICENSE)
 
 [david-image]: http://img.shields.io/david/nuintun/nengine.svg?style=flat-square
-[david-url]: https://david-dm.org/Nuintun/nengine
+[david-url]: https://david-dm.org/nuintun/nengine
 [node-image]: http://img.shields.io/node/v/nengine.svg?style=flat-square
 [npm-image]: http://img.shields.io/npm/v/nengine.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/nengine
