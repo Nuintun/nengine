@@ -330,7 +330,7 @@ function getVariable(code){
 function stringify(code){
   return "'"
     + code
-      // 单引号与反斜杠转义
+    // 单引号与反斜杠转义
       .replace(/('|\\)/g, '\\$1')
       // 换行符转义(windows + linux)
       .replace(/\r/g, '\\r')
