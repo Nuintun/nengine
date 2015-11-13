@@ -1,6 +1,6 @@
 {
   "name": "nengine",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "The nengine http server",
   "author": {
     "name": "nuintun",
@@ -31,7 +31,7 @@
     "http server"
   ],
   "dependencies": {
-    "nopt": "^3.0.4",
+    "nopt": "^3.0.6",
     "colors": "^1.1.2",
     "log4js": "^0.6.27",
     "file-send": "^0.1.2"
