@@ -1,6 +1,6 @@
 {
   "name": "nengine",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "The nengine http server",
   "author": {
     "name": "nuintun",
@@ -34,7 +34,7 @@
     "nopt": "^3.0.6",
     "colors": "^1.1.2",
     "log4js": "^0.6.32",
-    "file-send": "^0.1.3"
+    "file-send": "^0.1.4"
   },
   "devDependencies": {},
   "readmeFilename": "README.md"
