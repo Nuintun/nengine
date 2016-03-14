@@ -33,7 +33,7 @@
   "dependencies": {
     "nopt": "^3.0.6",
     "colors": "^1.1.2",
-    "log4js": "^0.6.32",
+    "log4js": "^0.6.33",
     "file-send": "^1.0.0"
   },
   "devDependencies": {},
