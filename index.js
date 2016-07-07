@@ -12,21 +12,21 @@
 var fs = require('fs');
 var path = require('path');
 var http = require('http');
-var mix = require('./mix');
-var pkg = require('../package.json');
+var mix = require('./lib/mix');
+var pkg = require('./package.json');
 var NengineServer = require('./lib/nengine');
 
 // The module to be exported.
 module.exports = {
   version: pkg.version,
   description: pkg.description,
-  cli: require('./cli'),
+  cli: require('./lib/cli'),
   create: function (config){
     return new NengineServer(config);
   },
   exec: function (cmd, options){
     var fileConfig;
-    var help = require('./help');
+    var help = require('./lib/help');
 
     // Show version
     if (options.version) {
