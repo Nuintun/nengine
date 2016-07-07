@@ -16,6 +16,9 @@ var mix = require('./lib/mix');
 var pkg = require('./package.json');
 var NengineServer = require('./lib/nengine');
 
+// Variable declaration
+var CWD = process.cwd();
+
 // The module to be exported.
 module.exports = {
   version: pkg.version,
