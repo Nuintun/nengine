@@ -12,6 +12,7 @@
 var fs = require('fs');
 var path = require('path');
 var http = require('http');
+var log4js = require('log4js');
 var mix = require('./lib/mix');
 var pkg = require('./package.json');
 var NengineServer = require('./lib/nengine');
@@ -28,6 +29,8 @@ module.exports = {
     return new NengineServer(config);
   },
   exec: function (cmd, options){
+    var logs;
+    var logger;
     var fileConfig;
     var help = require('./lib/help');
 
@@ -44,6 +47,38 @@ module.exports = {
 
     // Run server
     if (!cmd.length || cmd[0] === 'run') {
+      // Make log directory
+      logs = path.join(config.root, 'logs');
+
+      if (!fs.existsSync(logs)) {
+        try {
+          fs.mkdirSync(logs);
+        } catch (e) {
+          process.send(colors.red.bold('Please create "Logs" directory under the root directory.'));
+          // Exit process
+          process.exit();
+        }
+      }
+
+      // Configure log4js
+      log4js.configure({
+        appenders: [
+          {
+            type: 'console'
+          },
+          {
+            type: 'file',
+            maxLogSize: 20480,
+            filename: path.join(logs, 'nengine.log'),
+            category: 'Nengine'
+          }
+        ]
+      });
+
+      // Get logger
+      logger = log4js.getLogger('Nengine');
+      logger.setLevel('ALL');
+      
       // Root
       options.root = options.configfile ? path.dirname(options.configfile) : options.root;
       options.root = options.root || CWD;
