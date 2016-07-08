@@ -1,7 +1,7 @@
 {
   "name": "nengine",
   "version": "1.0.0",
-  "description": "The nengine http server",
+  "description": "The nengine http/https server",
   "author": {
     "name": "nuintun",
     "email": "nuintun@qq.com"
@@ -22,7 +22,9 @@
   "keywords": [
     "server",
     "http",
-    "http server"
+    "https",
+    "http server",
+    "https server"
   ],
   "dependencies": {
     "nopt": "^3.0.6",

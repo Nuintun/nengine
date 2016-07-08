@@ -1,7 +1,7 @@
 Nengine
 ==========
 
->A static node http server
+>A static node http/https server
 
 >[![NPM Version][npm-image]][npm-url]
 >[![Download Status][download-image]][npm-url]
