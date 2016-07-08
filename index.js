@@ -50,6 +50,20 @@ module.exports = {
       // hostname
       options.hostname = options.hostname || '127.0.0.1';
 
+      // https key
+      if (fs.existsSync(options.key)) {
+        options.cert = fs.readFileSync(options.key);
+      } else {
+        options.key = null;
+      }
+
+      // https cert
+      if (fs.existsSync(options.cert)) {
+        options.cert = fs.readFileSync(options.cert);
+      } else {
+        options.cert = null;
+      }
+
       // file config
       fileOptions = options.configfile || path.join(options.root, 'nengine.json');
 
