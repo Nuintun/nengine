@@ -67,7 +67,7 @@ you can config server by `nengine.json` under server root:
   - `'deny'` send a 403 for any request for ignore matched.
   - `'ignore'` pretend like the ignore matched does not exist and 404.
 
-`ignore`: set dir and files ignore rules. `{String}`
+`ignore`: set dir and files ignore glob rules. `{Array|String}`
 
 `maxAge`: set max-age, unit: seconds and also you can set like "2 days". `{Number|String}`
 
