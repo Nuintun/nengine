@@ -77,7 +77,7 @@ function dateFormat(date, format){
 module.exports = function (root){
   return {
     html: {
-      folder: function (dirname, files, cwd){
+      dir: function (dirname, files, cwd){
         var stats = [];
 
         files.forEach(function (file){
@@ -99,13 +99,13 @@ module.exports = function (root){
           }
         });
 
-        return render(root, '/html/folder', {
+        return render(root, '/html/dir', {
           files: stats,
           dirname: dirname
         });
       },
-      'default': function (status, message){
-        return render(root, '/html/status', {
+      error: function (status, message){
+        return render(root, '/html/error', {
           status: status,
           message: message
         });
