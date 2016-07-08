@@ -8,11 +8,11 @@
 
 'use strict';
 
-var base = __dirname,
-  fs = require('fs'),
-  path = require('path'),
-  mix = require('../lib/mix'),
-  template = require('./template');
+var base = __dirname;
+var fs = require('fs');
+var path = require('path');
+var mix = require('../lib/mix');
+var template = require('./template');
 
 // Set template config
 template.config('base', base);
