@@ -61,6 +61,10 @@ you can config server by `nengine.json` under server root:
 
 `hostname`: server hostname. `{String}`
 
+`key`: https key. `{String}`
+
+`cert`: https cert. `{String}`
+
 `dir`: show directory, you can set "allow", "deny", "ignore". `{String}`
 
 `ignoreAccess`: set how "ignore" are treated when encountered. `{String}`
