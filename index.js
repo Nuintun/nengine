@@ -28,7 +28,7 @@ module.exports = {
     return new NengineServer(options);
   },
   exec: function (cmd, options){
-    var fileConfig;
+    var fileOptions;
     var help = require('./lib/help');
 
     // Show version
@@ -48,18 +48,18 @@ module.exports = {
       options.root = options.configfile ? path.dirname(options.configfile) : options.root;
       options.root = options.root || CWD;
       // File config
-      fileConfig = options.configfile || path.join(options.root, 'nengine.json');
+      fileOptions = options.configfile || path.join(options.root, 'nengine.json');
 
       // File config
-      if (fs.existsSync(fileConfig)) {
-        fileConfig = require(fileConfig);
+      if (fs.existsSync(fileOptions)) {
+        fileOptions = require(fileOptions);
 
         // Can not set root in config file
-        delete fileConfig.root;
+        delete fileOptions.root;
       }
 
       // Run server
-      return this.create(mix(fileConfig, options)).run();
+      return this.create(mix(fileOptions, options)).run();
     } else {
       help.help();
       process.exit();
