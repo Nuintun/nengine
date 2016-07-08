@@ -45,8 +45,9 @@ module.exports = {
     // Run server
     if (!cmd.length || cmd[0] === 'run') {
       // Root
-      options.root = options.configfile ? path.dirname(options.configfile) : options.root;
       options.root = options.root || CWD;
+      options.root = options.configfile ? path.dirname(options.configfile) : options.root;
+
       // File config
       fileOptions = options.configfile || path.join(options.root, 'nengine.json');
 
