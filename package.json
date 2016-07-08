@@ -30,7 +30,7 @@
     "nopt": "^3.0.6",
     "colors": "^1.1.2",
     "log4js": "^0.6.37",
-    "file-send": "https://github.com/nuintun/file-send/archive/master.tar.gz"
+    "file-send": "^2.0.0"
   },
   "devDependencies": {},
   "readmeFilename": "README.md"
