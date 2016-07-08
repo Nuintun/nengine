@@ -39,6 +39,7 @@ you can config server by `nengine.json` under server root:
 ```json
 {
   "port": 80,
+  "hostname": "127.0.0.1",
   "dir": "allow",
   "ignoreAccess": "deny",
   "ignore": [
@@ -57,6 +58,8 @@ you can config server by `nengine.json` under server root:
 ```
 
 `port`: server port. `{Number}`
+
+`hostname`: server hostname. `{String}`
 
 `dir`: show directory, you can set "allow", "deny", "ignore". `{String}`
 
