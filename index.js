@@ -8,7 +8,7 @@
 
 'use strict';
 
-// External lib
+// external lib
 var fs = require('fs');
 var path = require('path');
 var http = require('http');
@@ -16,10 +16,10 @@ var mix = require('./lib/mix');
 var pkg = require('./package.json');
 var NengineServer = require('./lib/nengine');
 
-// Variable declaration
+// variable declaration
 var CWD = process.cwd();
 
-// The module to be exported.
+// the module to be exported.
 module.exports = {
   version: pkg.version,
   description: pkg.description,
@@ -31,35 +31,37 @@ module.exports = {
     var fileOptions;
     var help = require('./lib/help');
 
-    // Show version
+    // show version
     if (options.version) {
       help.version(options.verbose);
     }
 
-    // Show help
+    // show help
     if (options.help) {
       help.help();
       process.exit();
     }
 
-    // Run server
+    // run server
     if (!cmd.length || cmd[0] === 'run') {
-      // Root
+      // root
       options.root = options.root || CWD;
       options.root = options.configfile ? path.dirname(options.configfile) : options.root;
+      // hostname
+      options.hostname = options.hostname || '127.0.0.1';
 
-      // File config
+      // file config
       fileOptions = options.configfile || path.join(options.root, 'nengine.json');
 
-      // File config
+      // file config
       if (fs.existsSync(fileOptions)) {
         fileOptions = require(fileOptions);
 
-        // Can not set root in config file
+        // can not set root in config file
         delete fileOptions.root;
       }
 
-      // Run server
+      // run server
       return this.create(mix(fileOptions, options)).run();
     } else {
       help.help();
