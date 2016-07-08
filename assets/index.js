@@ -14,12 +14,12 @@ var path = require('path');
 var mix = require('../lib/mix');
 var template = require('./template');
 
-// Set template config
+// set template config
 template.config('base', base);
 template.config('compress', true);
 
 /**
- * Render template
+ * render template
  * @param root
  * @param filepath
  * @param data
@@ -36,7 +36,7 @@ function render(root, filepath, data){
 }
 
 /**
- * Date format
+ * date format
  * @param date
  * @param format
  * @returns {XML|string|void}
