@@ -39,11 +39,14 @@ you can config server by `nengine.json` under server root:
 ```json
 {
   "port": 80,
-  "directory": "allow",
-  "dotFiles": "deny",
+  "dir": "allow",
+  "ignoreAccess": "deny",
+  "ignore": [
+    "/node_modules(|/**/*)",
+    "!(/node_modules/**/nengine/assets/(images|fonts|css))/**/*"
+  ],
   "maxAge": 2592000,
   "index": ["index.html"],
-  "extensions": ["html"],
   "etag": true,
   "lastModified": true,
   "status": {
@@ -55,15 +58,20 @@ you can config server by `nengine.json` under server root:
 
 `port`: server port. `{Number}`
 
-`directory`: show directory, you can set "allow", "deny", "ignore". `{String}`
+`dir`: show directory, you can set "allow", "deny", "ignore". `{String}`
 
-`dotFiles`: show dot file, like directory. `{String}`
+`ignoreAccess`: set how "ignore" are treated when encountered. `{String}`
+
+  the default value is `'deny'`.
+
+  - `'deny'` send a 403 for any request for ignore matched.
+  - `'ignore'` pretend like the ignore matched does not exist and 404.
+
+`ignore`: set dir and files ignore rules. `{String}`
 
 `maxAge`: set max-age, unit: seconds and also you can set like "2 days". `{Number|String}`
 
 `index`: set default document. `{Array|String}`
-
-`extensions`: set default extname, program will automatic add extname. `{Array|String}`
 
 `etag`: set etag. `{Boolean}`
 
