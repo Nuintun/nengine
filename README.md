@@ -51,7 +51,7 @@ ignoreAccess: # default: deny
   deny
 ignore: # default: []
   - /nengine.yml
-  - /node_modules(|/**/*)
+  - /node_modules(|/**)
 maxAge: # default: 0
   2592000
 index: # default: []
