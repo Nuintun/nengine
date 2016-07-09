@@ -43,6 +43,10 @@ hostname:
   127.0.0.1
 dir:
   allow
+key:
+  /key.pem
+cert:
+  /cert.pem
 ignoreAccess:
   deny
 ignore:
