@@ -35,35 +35,35 @@ $ nengine -h
 
 for help.
 
-you can config server by `nengine.json` under server root:
+you can config server by `nengine.yml` under server root:
 ```yml
-port:
+port: # default: 80
   80
-hostname:
+hostname: # default: 127.0.0.1
   127.0.0.1
-dir:
+dir: # default: deny
   allow
-key:
+key: # options if not https server
   /key.pem
-cert:
+cert:  # options if not https server
   /cert.pem
-ignoreAccess:
+ignoreAccess: # default: deny
   deny
-ignore:
+ignore: # default: []
   - /nengine.yml
   - /node_modules(|/**/*)
-maxAge:
+maxAge: # default: 0
   2592000
-index:
+index: # default: []
   - index.htm
   - index.html
   - default.htm
   - default.html
-etag:
+etag: # default: true
   true
-lastModified:
+lastModified: # default: true
   true
-error:
+error: # default: {}
   404:
     /error/404.html
   default:
