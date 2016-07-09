@@ -42,15 +42,12 @@ you can config server by `nengine.json` under server root:
   "hostname": "127.0.0.1",
   "dir": "allow",
   "ignoreAccess": "deny",
-  "ignore": [
-    "/node_modules(|/**/*)",
-    "!(/node_modules/**/nengine/assets/(images|fonts|css))/**/*"
-  ],
+  "ignore": ["/node_modules(|/**/*)"],
   "maxAge": 2592000,
   "index": ["index.html"],
   "etag": true,
   "lastModified": true,
-  "status": {
+  "error": {
     "404": "/error/404.html",
     "default": "/error/default.html"
   }
@@ -84,7 +81,7 @@ you can config server by `nengine.json` under server root:
 
 `lastModified`: set lastModified. `{Boolean}`
 
-`status`: set custom error page. `{Object}`
+`error`: set custom error page. `{Object}`
 
 ## License
 
