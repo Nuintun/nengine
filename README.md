@@ -36,22 +36,34 @@ $ nengine -h
 for help.
 
 you can config server by `nengine.json` under server root:
-```json
-{
-  "port": 80,
-  "hostname": "127.0.0.1",
-  "dir": "allow",
-  "ignoreAccess": "deny",
-  "ignore": ["/node_modules(|/**/*)"],
-  "maxAge": 2592000,
-  "index": ["index.html"],
-  "etag": true,
-  "lastModified": true,
-  "error": {
-    "404": "/error/404.html",
-    "default": "/error/default.html"
-  }
-}
+```yml
+port:
+  80
+hostname:
+  127.0.0.1
+dir:
+  allow
+ignoreAccess:
+  deny
+ignore:
+  - /nengine.yml
+  - /node_modules(|/**/*)
+maxAge:
+  2592000
+index:
+  - index.htm
+  - index.html
+  - default.htm
+  - default.html
+etag:
+  true
+lastModified:
+  true
+error:
+  404:
+    /error/404.html
+  default:
+    /error/default.html
 ```
 
 `port`: server port. `{Number}`

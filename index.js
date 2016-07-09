@@ -75,7 +75,7 @@ module.exports = {
           fileOptions = fs.readFileSync(fileOptions);
           fileOptions = yaml.safeLoad(fileOptions);
         } catch (exception) {
-          console.log(exception);
+          console.log(JSON.stringify(exception, null, 2));
         }
 
         // can not set root in config file
