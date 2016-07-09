@@ -12,6 +12,7 @@
 var fs = require('fs');
 var path = require('path');
 var http = require('http');
+var yaml = require('js-yaml');
 var mix = require('./lib/mix');
 var pkg = require('./package.json');
 var NengineServer = require('./lib/nengine');
@@ -65,11 +66,17 @@ module.exports = {
       }
 
       // file config
-      fileOptions = options.configfile || path.join(options.root, 'nengine.json');
+      fileOptions = options.configfile || path.join(options.root, 'nengine.yml');
 
       // file config
       if (fs.existsSync(fileOptions)) {
-        fileOptions = require(fileOptions);
+        // parse yaml
+        try {
+          fileOptions = fs.readFileSync(fileOptions);
+          fileOptions = yaml.safeLoad(fileOptions);
+        } catch (exception) {
+          console.log(exception);
+        }
 
         // can not set root in config file
         delete fileOptions.root;
