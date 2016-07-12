@@ -74,9 +74,9 @@ error: # default: {}
 
 `hostname`: server hostname. `{String}`
 
-`key`: https key. `{String}`
+`key`: https key path relative to root. `{String}`
 
-`cert`: https cert. `{String}`
+`cert`: https cert path relative to root. `{String}`
 
 `dir`: show directory, you can set "allow", "deny", "ignore". `{String}`
 

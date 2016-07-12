@@ -51,20 +51,6 @@ module.exports = {
       // hostname
       options.hostname = options.hostname || '127.0.0.1';
 
-      // https key
-      if (fs.existsSync(options.key)) {
-        options.key = fs.readFileSync(options.key);
-      } else {
-        options.key = null;
-      }
-
-      // https cert
-      if (fs.existsSync(options.cert)) {
-        options.cert = fs.readFileSync(options.cert);
-      } else {
-        options.cert = null;
-      }
-
       // file config
       fileOptions = options.configfile || path.join(options.root, 'nengine.yml');
 
@@ -82,8 +68,35 @@ module.exports = {
         delete fileOptions.root;
       }
 
+      // mix options
+      options = mix(fileOptions, options);
+
+      // format key
+      if (typeof options.key === 'string') {
+        options.key = path.join(options.root, options.key);
+      }
+
+      // format cert
+      if (typeof options.cert === 'string') {
+        options.cert = path.join(options.root, options.cert);
+      }
+
+      // https key
+      if (fs.existsSync(options.key)) {
+        options.key = fs.readFileSync(options.key);
+      } else {
+        options.key = null;
+      }
+
+      // https cert
+      if (fs.existsSync(options.cert)) {
+        options.cert = fs.readFileSync(options.cert);
+      } else {
+        options.cert = null;
+      }
+
       // run server
-      return this.create(mix(fileOptions, options)).run();
+      return this.create(options).run();
     } else {
       help.help();
       process.exit();
