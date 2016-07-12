@@ -53,7 +53,7 @@ module.exports = {
 
       // https key
       if (fs.existsSync(options.key)) {
-        options.cert = fs.readFileSync(options.key);
+        options.key = fs.readFileSync(options.key);
       } else {
         options.key = null;
       }
