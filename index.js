@@ -20,6 +20,22 @@ var NengineServer = require('./lib/nengine');
 // variable declaration
 var CWD = process.cwd();
 
+/**
+ * file is exists sync
+ * @param path
+ * @param [mode]
+ * @returns {boolean}
+ */
+var existsSync = fs.accessSync ? function (path, mode){
+  try {
+    fs.accessSync(path, fs.constants[mode]);
+
+    return true;
+  } catch (e) {
+    return false;
+  }
+} : fs.existsSync;
+
 // the module to be exported.
 module.exports = {
   version: pkg.version,
@@ -55,7 +71,7 @@ module.exports = {
       fileOptions = options.configfile || path.join(options.root, 'nengine.yml');
 
       // file config
-      if (fs.existsSync(fileOptions)) {
+      if (existsSync(fileOptions, 'R_OK')) {
         // parse yaml
         try {
           fileOptions = fs.readFileSync(fileOptions);
@@ -82,14 +98,14 @@ module.exports = {
       }
 
       // https key
-      if (fs.existsSync(options.key)) {
+      if (existsSync(options.key, 'R_OK')) {
         options.key = fs.readFileSync(options.key);
       } else {
         options.key = null;
       }
 
       // https cert
-      if (fs.existsSync(options.cert)) {
+      if (existsSync(options.cert, 'R_OK')) {
         options.cert = fs.readFileSync(options.cert);
       } else {
         options.cert = null;
