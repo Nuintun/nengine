@@ -21,20 +21,25 @@ var NengineServer = require('./lib/nengine');
 var CWD = process.cwd();
 
 /**
- * file is exists sync
- * @param path
- * @param [mode]
+ * file exists sync
+ * @param src
  * @returns {boolean}
  */
-var existsSync = fs.accessSync ? function (path, mode){
-  try {
-    fs.accessSync(path, fs.constants[mode]);
+function fileExistsSync(src){
+  if (!src) return false;
 
-    return true;
-  } catch (e) {
+  try {
+    return fs.statSync(src).isFile();
+  } catch (error) {
+    // check exception. if ENOENT - no such file or directory ok, file doesn't exist.
+    // otherwise something else went wrong, we don't have rights to access the file, ...
+    if (error.code != 'ENOENT') {
+      throw error;
+    }
+
     return false;
   }
-} : fs.existsSync;
+}
 
 // the module to be exported.
 module.exports = {
@@ -45,7 +50,7 @@ module.exports = {
     return new NengineServer(options);
   },
   exec: function (cmd, options){
-    var fileOptions;
+    var yml;
     var help = require('./lib/help');
 
     // show version
@@ -68,24 +73,23 @@ module.exports = {
       options.hostname = options.hostname || '127.0.0.1';
 
       // file config
-      fileOptions = options.configfile || path.join(options.root, 'nengine.yml');
+      yml = options.configfile || path.join(options.root, 'nengine.yml');
 
       // file config
-      if (existsSync(fileOptions, 'R_OK')) {
+      if (fileExistsSync(yml)) {
         // parse yaml
-        try {
-          fileOptions = fs.readFileSync(fileOptions);
-          fileOptions = yaml.safeLoad(fileOptions);
-        } catch (exception) {
-          console.log(JSON.stringify(exception, null, 2));
-        }
+        var source = fs.readFileSync(yml);
+
+        yml = yaml.safeLoad(source, {
+          filename: yml
+        });
 
         // can not set root in config file
-        delete fileOptions.root;
+        delete yml.root;
       }
 
       // mix options
-      options = mix(fileOptions, options);
+      options = mix(yml, options);
 
       // format key
       if (typeof options.key === 'string') {
@@ -98,14 +102,14 @@ module.exports = {
       }
 
       // https key
-      if (existsSync(options.key, 'R_OK')) {
+      if (fileExistsSync(options.key)) {
         options.key = fs.readFileSync(options.key);
       } else {
         options.key = null;
       }
 
       // https cert
-      if (existsSync(options.cert, 'R_OK')) {
+      if (fileExistsSync(options.cert)) {
         options.cert = fs.readFileSync(options.cert);
       } else {
         options.cert = null;
