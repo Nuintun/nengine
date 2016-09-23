@@ -13,19 +13,12 @@ var fs = require('fs');
 var path = require('path');
 var http = require('http');
 var yaml = require('js-yaml');
-var mix = require('./lib/mix');
+var util = require('./lib/util');
 var pkg = require('./package.json');
 var NengineServer = require('./lib/nengine');
 
 // variable declaration
 var CWD = process.cwd();
-
-// is
-var is = {
-  string: function (value){
-    return Object.prototype.toString.call(value) === '[object String]';
-  }
-};
 
 /**
  * file exists sync
@@ -33,7 +26,7 @@ var is = {
  * @returns {boolean}
  */
 function fileExistsSync(src){
-  if (!src) return false;
+  if (!src || !util.string(src)) return false;
 
   try {
     return fs.statSync(src).isFile();
@@ -94,10 +87,10 @@ module.exports = {
       }
 
       // mix options
-      options = mix(yml, options);
+      options = util.extend(true, yml, options);
 
       // hostname
-      options.hostname = options.hostname && is.string(options.hostname)
+      options.hostname = options.hostname && util.string(options.hostname)
         ? options.hostname : false;
 
       // format key

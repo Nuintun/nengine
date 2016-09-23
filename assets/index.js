@@ -11,7 +11,7 @@
 var base = __dirname;
 var fs = require('fs');
 var path = require('path');
-var mix = require('../lib/mix');
+var util = require('../lib/util');
 var template = require('./template');
 
 // set template config
@@ -28,7 +28,7 @@ template.config('compress', true);
 function render(root, filepath, data){
   var relapath = '/' + path.relative(root, base).replace(/\\/g, '/');
 
-  data = mix({}, data);
+  data = util.extend(true, {}, data);
 
   data.ROOT = relapath;
 
