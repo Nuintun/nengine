@@ -20,6 +20,13 @@ var NengineServer = require('./lib/nengine');
 // variable declaration
 var CWD = process.cwd();
 
+// is
+var is = {
+  string: function (value){
+    return Object.prototype.toString.call(value) === '[object String]';
+  }
+};
+
 /**
  * file exists sync
  * @param src
@@ -69,8 +76,6 @@ module.exports = {
       // root
       options.root = options.root || CWD;
       options.root = options.configfile ? path.dirname(options.configfile) : options.root;
-      // hostname
-      options.hostname = options.hostname || '127.0.0.1';
 
       // file config
       yml = options.configfile || path.join(options.root, 'nengine.yml');
@@ -90,6 +95,10 @@ module.exports = {
 
       // mix options
       options = mix(yml, options);
+
+      // hostname
+      options.hostname = options.hostname && is.string(options.hostname)
+        ? options.hostname : false;
 
       // format key
       if (typeof options.key === 'string') {
