@@ -25,7 +25,7 @@ var CWD = process.cwd();
  * @param src
  * @returns {boolean}
  */
-function fileExistsSync(src){
+function fileExistsSync(src) {
   if (!src || !util.string(src)) return false;
 
   try {
@@ -46,10 +46,10 @@ module.exports = {
   version: pkg.version,
   description: pkg.description,
   cli: require('./lib/cli'),
-  create: function (options){
+  create: function(options) {
     return new NengineServer(options);
   },
-  exec: function (cmd, options){
+  exec: function(cmd, options) {
     var yml;
     var help = require('./lib/help');
 
@@ -90,8 +90,8 @@ module.exports = {
       options = util.extend(true, yml, options);
 
       // hostname
-      options.hostname = options.hostname && util.string(options.hostname)
-        ? options.hostname : false;
+      options.hostname = options.hostname && util.string(options.hostname) ?
+        options.hostname : false;
 
       // format key
       if (typeof options.key === 'string') {
