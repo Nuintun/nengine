@@ -25,7 +25,7 @@ template.config('compress', true);
  * @param data
  * @returns {String|Function|*|exports}
  */
-function render(root, filepath, data){
+function render(root, filepath, data) {
   var relapath = '/' + path.relative(root, base).replace(/\\/g, '/');
 
   data = util.extend(true, {}, data);
@@ -41,7 +41,7 @@ function render(root, filepath, data){
  * @param format
  * @returns {XML|string|void}
  */
-function dateFormat(date, format){
+function dateFormat(date, format) {
   format = format || 'yyyy-MM-dd hh:mm:ss';
 
   var map = {
@@ -54,7 +54,7 @@ function dateFormat(date, format){
     'S': date.getMilliseconds() //毫秒
   };
 
-  format = format.replace(/([yMdhmsqS])+/g, function (all, t){
+  format = format.replace(/([yMdhmsqS])+/g, function(all, t) {
     var v = map[t];
 
     if (v !== undefined) {
@@ -74,13 +74,13 @@ function dateFormat(date, format){
   return format;
 }
 
-module.exports = function (root){
+module.exports = function(root) {
   return {
     html: {
-      dir: function (dirname, files, cwd){
+      dir: function(dirname, files, cwd) {
         var stats = [];
 
-        files.forEach(function (file){
+        files.forEach(function(file) {
           var stat;
           try {
             stat = fs.statSync(path.join(cwd, file));
@@ -104,7 +104,7 @@ module.exports = function (root){
           dirname: dirname
         });
       },
-      error: function (status, message){
+      error: function(status, message) {
         return render(root, '/html/error', {
           status: status,
           message: message
