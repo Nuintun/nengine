@@ -295,20 +295,15 @@ var KEYWORDS =
   // 关键字
   'break,case,catch,continue,debugger,default,delete,do,else,false' +
   ',finally,for,function,if,in,instanceof,new,null,return,switch,this' +
-  ',throw,true,try,typeof,var,void,while,with'
-
-// 保留字
-+',abstract,boolean,byte,char,class,const,double,enum,export,extends' +
-',final,float,goto,implements,import,int,interface,long,native' +
-',package,private,protected,public,short,static,super,synchronized' +
-',throws,transient,volatile'
-
-// ECMA 5 - use strict
-+
-',arguments,let,yield'
-
-+
-',undefined';
+  ',throw,true,try,typeof,var,void,while,with' +
+  // 保留字
+  ',abstract,boolean,byte,char,class,const,double,enum,export,extends' +
+  ',final,float,goto,implements,import,int,interface,long,native' +
+  ',package,private,protected,public,short,static,super,synchronized' +
+  ',throws,transient,volatile' +
+  // ECMA 5 - use strict
+  ',arguments,let,yield' +
+  ',undefined';
 
 var REMOVE_RE = /\/\*[\w\W]*?\*\/|\/\/[^\n]*\n|\/\/[^\n]*$|"(?:[^"\\]|\\[\w\W])*"|'(?:[^'\\]|\\[\w\W])*'|\s*\.\s*[$\w\.]+/g;
 var SPLIT_RE = /[^\w$]+/g;
@@ -349,9 +344,7 @@ function compiler(source, options) {
   var line = 1;
   var uniq = { $data: 1, $filename: 1, $utils: 1, $helpers: 1, $out: 1, $line: 1 };
   var isNewEngine = ''.trim; // '__proto__' in {}
-  var replaces = isNewEngine ?
-    ["$out='';", "$out+=", ";", "$out"] :
-    ["$out=[];", "$out.push(", ");", "$out.join('')"];
+  var replaces = isNewEngine ? ["$out='';", "$out+=", ";", "$out"] : ["$out=[];", "$out.push(", ");", "$out.join('')"];
   var concat = isNewEngine ?
     "$out+=text;return $out;" :
     "$out.push(text);";
