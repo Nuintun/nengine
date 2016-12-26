@@ -27,7 +27,7 @@
     "https server"
   ],
   "dependencies": {
-    "nopt": "^3.0.6",
+    "nopt": "^4.0.1",
     "colors": "^1.1.2",
     "js-yaml": "^3.7.0",
     "log4js": "^1.0.1",
