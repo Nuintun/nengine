@@ -3,6 +3,7 @@
   height: 654px;
   margin: -327px 0 0 -480px;
 }
+
 .ui-files {
   background: #fff;
   margin-bottom: 0;
@@ -10,19 +11,23 @@
   height: 594px;
   box-shadow: 0 0 13px #333;
 }
+
 .ui-pillar {
   height: 36px;
 }
+
 .ui-files-list {
   height: 558px;
   padding: 0 10px;
   overflow-x: hidden;
   overflow-y: auto;
 }
+
 .ui-files-list p {
   height: 31px;
   line-height: 31px;
 }
+
 .ui-line-num,
 .ui-file-type,
 .ui-file-mtime,
@@ -35,6 +40,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .ui-files .ui-dirname {
   width: 940px;
   height: 35px;
@@ -49,27 +55,33 @@
   text-overflow: ellipsis;
   border-bottom: 1px solid #aaa;
 }
+
 .ui-files a:hover {
   text-decoration: underline;
   color: #f00;
 }
+
 .ui-files a:visited {
   color: #666;
 }
+
 .ui-line-num {
   font-weight: bold;
   width: 40px;
   padding-right: 10px;
   text-align: right;
 }
+
 .ui-file-type {
   width: 55px;
   color: #090;
 }
+
 .ui-file-mtime {
   width: 188px;
   color: #900;
 }
+
 .ui-home {
   margin-top: 26px;
 }

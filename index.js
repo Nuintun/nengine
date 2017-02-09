@@ -90,8 +90,8 @@ module.exports = {
       options = util.extend(true, yml, options);
 
       // hostname
-      options.hostname = options.hostname && util.string(options.hostname) ?
-        options.hostname : false;
+      options.hostname = options.hostname && util.string(options.hostname)
+        ? options.hostname : false;
 
       // format key
       if (typeof options.key === 'string') {
