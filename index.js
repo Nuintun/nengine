@@ -33,7 +33,7 @@ function fileExistsSync(src) {
   } catch (error) {
     // check exception. if ENOENT - no such file or directory ok, file doesn't exist.
     // otherwise something else went wrong, we don't have rights to access the file, ...
-    if (error.code != 'ENOENT') {
+    if (error.code !== 'ENOENT') {
       throw error;
     }
 
