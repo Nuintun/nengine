@@ -67,6 +67,8 @@ error: # default: {}
     /error/404.html
   default:
     /error/default.html
+logLevel: # log level
+  ALL
 ```
 
 `port`: server port. `{Number}`
@@ -97,6 +99,8 @@ error: # default: {}
 `lastModified`: set lastModified. `{Boolean}`
 
 `error`: set custom error page. `{Object}`
+
+`logLevel`: set log level, see [log4js-node](https://github.com/nomiddlename/log4js-node). `{String}`
 
 ## License
 

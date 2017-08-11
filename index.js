@@ -103,6 +103,13 @@ module.exports = {
         options.cert = path.join(options.root, options.cert);
       }
 
+      // format log level
+      if (typeof options.logLevel === 'string') {
+        options.logLevel = options.logLevel.toUpperCase();
+      } else {
+        options.logLevel = 'INFO';
+      }
+
       // https key
       if (fileExistsSync(options.key)) {
         options.key = fs.readFileSync(options.key);
