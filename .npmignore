@@ -27,3 +27,6 @@ Makefile
 # Logs
 logs
 *.log
+
+# npm lock file
+package-lock.json
